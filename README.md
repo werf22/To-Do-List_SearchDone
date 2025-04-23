@@ -18,6 +18,13 @@ This project aims to create a highly efficient, minimalist, and reliable alterna
 *   Responsive design for desktop (Macbook) and mobile (iPhone).
 *   **Task Viewing & Editing:** View detailed task information and edit fields directly on the task page (`/tasks/[id]`).
 *   **Task Deletion:** Delete tasks individually from the task detail page or the main list view, with confirmation prompts. (Implemented 2025-04-22)
+*   **Task Creation & Basic Management (CRUD).**
+*   **Detailed Task View based on `TASK_FIELD_CONFIG`.**
+*   **Hierarchical Task Tree View.**
+*   **Comprehensive Task Search:** Filter tasks across all fields (text, dropdowns, booleans, etc.) using a unified search bar.
+*   **Filter Reset:** Easily clear all active filters to view all tasks.
+*   **CSV Import/Export functionality.**
+*   **Dynamic Portfolio/Project/Section filtering.**
 *   **CSV Import/Export:**
     *   Import tasks from a CSV file via an API endpoint (`/api/csv/import`).
     *   Export tasks to CSV with comprehensive field support.

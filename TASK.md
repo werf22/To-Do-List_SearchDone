@@ -42,19 +42,19 @@ Create a custom AI-powered Task Management web application based on the specific
 *   [x] Run initial Prisma migration (`npx prisma migrate dev`).
 *   [x] Create database seeding script (`prisma/seed.ts`).
 *   [x] Refine core documentation (`csv_field_documentation.md`, `csv_input_form_documentation.md`).
-*   [ ] Create basic API route `app/api/tasks/route.ts` with:
+*   [x] Create basic API route `app/api/tasks/route.ts` with:
     *   [ ] `GET` handler to fetch all tasks.
     *   [ ] `POST` handler to create a new task (accepting minimal fields: name, goal, context, optional: portfolio, priority, due_date).
-*   [ ] Create main frontend page `app/page.tsx`.
-*   [ ] Create frontend component `components/TaskForm.tsx` for adding tasks.
-*   [ ] Create frontend component `components/TaskList.tsx` for displaying tasks.
-*   [ ] Move all files to correct structure as per documentation.
+*   [x] Create main frontend page `app/page.tsx`.
+*   [x] Create frontend component `components/TaskForm.tsx` for adding tasks.
+*   [x] Create frontend component `components/TaskList.tsx` for displaying tasks.
+*   [x] Move all files to correct structure as per documentation.
 
 **Phase 1: Core Task Management**
 
-*   [ ] API: Implement single task endpoints in `app/api/tasks/[id]/route.ts`:
-    *   [ ] `GET` handler to fetch a specific task by ID.
-    *   [ ] `PATCH` handler to update a specific task.
+*   [x] API: Implement single task endpoints in `app/api/tasks/[id]/route.ts`:
+    *   [x] `GET` handler to fetch a specific task by ID.
+    *   [x] `PATCH` handler to update a specific task.
 *   [x] Frontend: Create detailed task view page `app/tasks/[id]/page.tsx`.
 *   [x] Frontend: Implement editing functionality for all task fields.
 *   [x] Frontend: Create custom Select and MultiSelect components for dropdown fields.
@@ -68,8 +68,8 @@ Create a custom AI-powered Task Management web application based on the specific
 *   [x] Frontend: Implement task deletion for individual and batch operations.
 *   [x] Backend: Create dedicated task deletion endpoints and emergency deletion features.
 *   [ ] UX: Add toast notifications for actions.
-*   [ ] Testing: Add comprehensive unit and integration tests.
-*   [ ] Thoroughly test filtering (FilterBar, AdvancedFilters) and task detail page functionality after recent error fixes.
+*   [x] Testing: Add comprehensive unit and integration tests.
+*   [x] Thoroughly test filtering (FilterBar, AdvancedFilters) and task detail page functionality after recent error fixes.
 
 **Phase 2: UI Enhancements & Core Features**
 
@@ -89,12 +89,29 @@ Create a custom AI-powered Task Management web application based on the specific
 *   [ ] Backend: Implement basic API endpoint for AI chat interaction (`app/api/ai/chat/route.ts`).
 *   [ ] Frontend: Create dashboard with task statistics.
 *   [ ] Frontend: Add customizable views/layouts.
-*   [ ] Backend: Implement full text search across tasks.
+*   [x] Backend: Implement full text search across tasks.
 *   [ ] API: Create endpoints for batch operations.
 *   [ ] Frontend: Add keyboard shortcuts for power users.
 *   [ ] Backend: Implement more sophisticated background processing.
 *   [ ] UX: Implement drag-and-drop for task organization.
 *   [ ] System: Add performance optimizations.
+
+---
+
+## Current Tasks / In Progress
+
+*   **UI/UX Refinements:** Continue general improvements to layout, styling, and user interaction based on `TASK_FIELD_CONFIG` and feedback.
+*   **FilterBar Enhancements:** Further refine filter interactions, possibly adding more advanced filter types or improving existing ones.
+
+## Recently Completed (to be moved to DONE.md upon verification)
+
+*   **[COMPLETED & DEBUGGED 2025-04-23] Comprehensive Task Search & Reset:**
+    *   Implemented backend raw SQL search in `/api/tasks/route.ts` to handle searching across diverse field types (text, boolean, dropdowns, etc.).
+    *   Integrated search input into `FilterBar.tsx`.
+    *   Fixed backend boolean search logic to prevent type errors.
+    *   Implemented Filter Reset functionality in `FilterBar.tsx`.
+    *   Debugged frontend state management issues in `FilterBar.tsx` and `app/page.tsx` (`handleFilterChange`) to ensure search terms are correctly added and removed from the filter state, resolving issues where clearing the search or resetting filters did not properly update the task list.
+*   **Task Tree View:** Implemented `/components/task-tree.tsx` to display tasks hierarchically.
 
 ---
 

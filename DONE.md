@@ -118,6 +118,8 @@ This document tracks major completed features and milestones during the developm
     *   Date: 2025-04-22
     *   Files Created: `app/api/tasks/tree/route.ts`, `components/task-tree.tsx`, `types/task-tree.ts`, `components/ui/collapsible.tsx`, `components/ui/button.tsx`, `components/ui/skeleton.tsx`.
     *   Files Modified: `app/page.tsx`, `tsconfig.json`, `package.json`, `package-lock.json`, `components.json`, `TASK.md`, `DONE.md`, `PROJECTS_FILE_STRUCTURE_DOCUMENTATION.md`.
+*   **[DONE]** Full-text Search Implementation:
+    *   Implemented full-text search across tasks (schema update, API route modification, FilterBar integration, page data fetching update).
 
 ## Phase 4: Bug Fixes and Improvements - Completed [2025-04-22]
 
@@ -143,6 +145,10 @@ This document tracks major completed features and milestones during the developm
 *   **[2025-04-22 20:10]** Enhanced CSV import functionality to use commas as column delimiters and semicolons as value separators within multi-select fields.
 *   **[2025-04-22 20:10]** Added support for user-provided task IDs during CSV import, creating new tasks if IDs don't exist.
 *   **[2025-04-22 20:10]** Fixed issue with default filters preventing tasks from displaying when the page initially loads.
+*   **[2025-04-23]** Implemented backend raw SQL search logic in `/api/tasks/route.ts` for comprehensive filtering across various field types.
+*   **[2025-04-23]** Fixed type mismatch errors in backend boolean field search logic.
+*   **[2025-04-23]** Integrated search input and reset functionality into `FilterBar.tsx` component.
+*   **[2025-04-23]** Debugged and resolved frontend state management issues related to clearing/resetting the search filter in `FilterBar.tsx` and `app/page.tsx` (`handleFilterChange`), ensuring correct task list updates.
 
 ---
 
@@ -155,3 +161,4 @@ _Last updated: 2025-04-22 (Task TreeView Implementation)_
 _Last updated: 2025-04-22 (Refined csv_field_documentation.md and csv_input_form_documentation.md)_
 _Last updated: 2025-04-22 (Created prisma/seed.ts)_
 _Last updated: 2025-04-23 (React/Next.js Fixes and TypeScript Fixes)_
+_Last updated: 2025-04-23 (Full-text Search Implementation)_

@@ -166,7 +166,17 @@ export default function HomePage() {
       // Add other filters
       if (filters.cognitive_load) url.searchParams.append('cognitive_load', filters.cognitive_load);
       if (filters.energy_level_required) url.searchParams.append('energy_level_required', filters.energy_level_required);
-      
+
+      // --- Add Global Search Filter ---
+      if (filters.search && typeof filters.search === 'string' && filters.search.trim() !== '') {
+        url.searchParams.append('search', filters.search.trim());
+      }
+
+      url.searchParams.sort(); // Ensure consistent parameter order for caching/debugging
+
+      // Log the final URL before fetching
+      console.log('>>> HomePage: Fetching from URL:', url.toString()); // <-- ADD LOG 3
+
       console.log("Fetching from URL:", url.toString());
       const response = await fetch(url.toString()); // Call the GET endpoint with filters
 
@@ -198,10 +208,9 @@ export default function HomePage() {
     }
   }, [filters]); // Dependency on filters to refetch when filters change
 
-  // --- Initial Data Load ---
-  // Only run once when component mounts, and then again if filters change
+  // --- Initial Data Load --- Effect
   useEffect(() => {
-    // Fetch tasks without filtering on initial load
+    console.log('>>> HomePage: useEffect[filters] triggered. Current filters state:', JSON.stringify(filters)); // <-- ADD LOG 2
     if (isFirstLoad.current) {
       isFirstLoad.current = false;
       fetchTasks(false); // false means don't use current filters
@@ -213,8 +222,10 @@ export default function HomePage() {
 
   // --- Handle Filter Changes (Memoized) ---
   const handleFilterChange = useCallback((newFilters: AllFiltersState) => {
-    console.log("HomePage: handleFilterChange called with:", newFilters);
-    setFilters(prev => ({ ...prev, ...newFilters }));
+    console.log(">>> HomePage: handleFilterChange received:", JSON.stringify(newFilters)); // <-- ADD LOG 1
+    // Directly set the state to the complete newFilters object received from FilterBar
+    // This correctly removes keys (like 'search') that are no longer present in newFilters
+    setFilters(newFilters);
   }, []); // Empty dependency array because setFilters is stable
 
   // --- Handle Tasks Changed ---

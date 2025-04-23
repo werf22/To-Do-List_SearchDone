@@ -67,292 +67,295 @@ export async function GET(request: Request) {
   const estimatedCostBudgetMin = url.searchParams.get('estimated_cost_budget_min');
   const estimatedCostBudgetMax = url.searchParams.get('estimated_cost_budget_max');
   
+  // Global Full-Text Search
+  const search = url.searchParams.get('search');
+
+  console.log(`Prisma Client Version (Runtime): ${Prisma.prismaVersion.client}`);
+  console.log(`Received search param: ${search}`);
+
   try {
     // Build the WHERE clause for Prisma based on query parameters
-    const whereClause: any = {}; // Using 'any' type to bypass strict typing issues with complex Prisma filters
-    
-    // Common filters like text search
-    if (nameContains) {
-      whereClause.name = { contains: nameContains, mode: 'insensitive' };
-    }
-    
-    if (descriptionContains) {
-      whereClause.description = { contains: descriptionContains, mode: 'insensitive' };
-    }
-    
-    if (notesContains) {
-      whereClause.notes = { contains: notesContains, mode: 'insensitive' };
-    }
-    
-    if (subtasksContains) {
-      whereClause.subtasks_for_user = { contains: subtasksContains, mode: 'insensitive' };
-    }
-    
-    // Date filters
-    if (dueDateBefore) {
-      whereClause.due_date = { ...(whereClause.due_date || {}), lte: new Date(dueDateBefore) };
-    }
-    
-    if (dueDateAfter) {
-      whereClause.due_date = { ...(whereClause.due_date || {}), gte: new Date(dueDateAfter) };
-    }
-    
-    if (createdAtBefore) {
-      whereClause.created_at = { ...(whereClause.created_at || {}), lte: new Date(createdAtBefore) };
-    }
-    
-    if (createdAtAfter) {
-      whereClause.created_at = { ...(whereClause.created_at || {}), gte: new Date(createdAtAfter) };
-    }
-    
-    // Now add filters based on the query parameters - these construct the Prisma WHERE clause
-    
-    if (portfolio) {
-      whereClause.portfolio = { has: portfolio };
-    }
-    
-    if (project) {
-      whereClause.project = { has: project };
-    }
-    
-    if (section) {
-      whereClause.section = { has: section };
-    }
-    
-    if (priority) {
-      whereClause.priority = priority;
-    }
-    
-    // Tags (array contains) - use Prisma's 'has' operator for arrays
-    if (tags.length > 0) {
-      // If more than one tag, make a compound condition (has ANY of the tags)
-      if (tags.length > 1) {
-        whereClause.OR = tags.map(tag => ({
-          tags: { has: tag }
-        }));
-      } else {
-        // Just a single tag
-        whereClause.tags = { has: tags[0] };
+    const whereClause: Prisma.TaskWhereInput = {}; // Use Prisma.TaskWhereInput for better type safety
+
+    // Apply search filter manually if search term exists
+    let tasks: Task[] = []; // Declare tasks variable here with the correct type
+
+    if (search) {
+      console.log(`Executing Raw SQL search for: "${search}"`);
+      // Prepare search term for ILIKE
+      const searchTerm = `%${search}%`;
+      const searchTermLower = search.toLowerCase();
+
+      // Conditionally add boolean checks
+      let booleanChecks = Prisma.empty;
+      if (searchTermLower === 'true') {
+        booleanChecks = Prisma.sql`
+            OR "allow_autonomous_execution" = true
+            OR "allow_notifications" = true
+            OR "completion_criteria_met" = true
+            OR "ai_help_needed" = true
+            OR "task_requires_ai_agent" = true
+        `;
+      } else if (searchTermLower === 'false') {
+        booleanChecks = Prisma.sql`
+            OR "allow_autonomous_execution" = false
+            OR "allow_notifications" = false
+            OR "completion_criteria_met" = false
+            OR "ai_help_needed" = false
+            OR "task_requires_ai_agent" = false
+        `;
       }
-    }
-    
-    // Related entities - create multiple OR conditions
-    if (relatedEntities.length > 0) {
-      // Use OR conditions for text fields containing the terms
-      const orConditions = relatedEntities.map(entity => ({
-        OR: [
-          // We need to use type 'any' for these complex where conditions
-          { related_entities: { contains: entity } } as any
-        ]
-      }));
-      
-      // Add these conditions to the main where clause
-      if (!whereClause.OR) {
-        whereClause.OR = orConditions;
-      } else {
-        whereClause.OR = [...whereClause.OR, ...orConditions.map(c => c.OR[0])];
+
+      // Base SQL query structure
+      const query = Prisma.sql`
+        SELECT * FROM "Task"
+        WHERE
+          (
+            -- String checks
+            "name" ILIKE ${searchTerm} OR
+            "description" ILIKE ${searchTerm} OR
+            "notes" ILIKE ${searchTerm} OR
+            "task_comments" ILIKE ${searchTerm} OR
+            "parent_task" ILIKE ${searchTerm} OR
+            "subtasks_for_user" ILIKE ${searchTerm} OR
+            "subtasks_for_ai" ILIKE ${searchTerm} OR
+            "subtasks_in_system" ILIKE ${searchTerm} OR
+            "dependents" ILIKE ${searchTerm} OR
+            "outgoing_dependents" ILIKE ${searchTerm} OR
+            "related_tasks" ILIKE ${searchTerm} OR
+            "priority" ILIKE ${searchTerm} OR
+            "deadline_type" ILIKE ${searchTerm} OR
+            "recurrence_frequency" ILIKE ${searchTerm} OR
+            "assignee" ILIKE ${searchTerm} OR
+            "type" ILIKE ${searchTerm} OR
+            "collaborators" ILIKE ${searchTerm} OR
+            "ai_workflow_status" ILIKE ${searchTerm} OR
+            "allow_autonomous_execution" ILIKE ${searchTerm} OR
+            "ai_behavior_on_uncertainty" ILIKE ${searchTerm} OR
+            "ai_creativity_level" ILIKE ${searchTerm} OR
+            "ai_processing_priority" ILIKE ${searchTerm} OR
+            "ai_agent_status_log" ILIKE ${searchTerm} OR
+            "feedback_for_ai" ILIKE ${searchTerm} OR
+            "ai_output_rating" ILIKE ${searchTerm} OR
+            "action_required_from_user" ILIKE ${searchTerm} OR
+            "task_goal" ILIKE ${searchTerm} OR
+            "input_data_context" ILIKE ${searchTerm} OR
+            "specific_constraints_instructions" ILIKE ${searchTerm} OR
+            "ai_action_process_free_text" ILIKE ${searchTerm} OR
+            "ai_brainstorm_ideas_on_how_it_can_help_me" ILIKE ${searchTerm} OR
+            "task_type" ILIKE ${searchTerm} OR
+            "estimated_user_time" ILIKE ${searchTerm} OR
+            "cognitive_load" ILIKE ${searchTerm} OR
+            "energy_level_required" ILIKE ${searchTerm} OR
+            "location" ILIKE ${searchTerm} OR
+            "execution_location" ILIKE ${searchTerm} OR
+            "internet_requirement" ILIKE ${searchTerm} OR
+            "focus_requirement" ILIKE ${searchTerm} OR
+            "target_audience" ILIKE ${searchTerm} OR
+            "task_purpose" ILIKE ${searchTerm} OR
+            "expected_impact_success_metric" ILIKE ${searchTerm} OR
+            "waiting_for" ILIKE ${searchTerm} OR
+            "financial_return_value_speed" ILIKE ${searchTerm} OR
+            "financial_aspect" ILIKE ${searchTerm} OR
+            "suggested_initial_steps_subtasks" ILIKE ${searchTerm} OR
+            "related_areas_for_ai_to_consider" ILIKE ${searchTerm} OR
+            "potential_dependencies_related_tasks" ILIKE ${searchTerm} OR
+
+            -- Int checks (cast to TEXT)
+            "number_of_variations"::TEXT ILIKE ${searchTerm} OR
+
+            -- Float checks (cast to TEXT)
+            "estimated_cost_budget"::TEXT ILIKE ${searchTerm} OR
+
+            -- DateTime checks (cast to TEXT)
+            "completed_at"::TEXT ILIKE ${searchTerm} OR
+            "due_date"::TEXT ILIKE ${searchTerm} OR
+            "start_date"::TEXT ILIKE ${searchTerm} OR
+
+            -- String[] checks (unnest and check elements)
+            EXISTS (SELECT 1 FROM unnest("portfolio") elem WHERE elem ILIKE ${searchTerm}) OR
+            EXISTS (SELECT 1 FROM unnest("project") elem WHERE elem ILIKE ${searchTerm}) OR
+            EXISTS (SELECT 1 FROM unnest("section") elem WHERE elem ILIKE ${searchTerm}) OR
+            EXISTS (SELECT 1 FROM unnest("tags") elem WHERE elem ILIKE ${searchTerm}) OR
+            EXISTS (SELECT 1 FROM unnest("desired_output_format") elem WHERE elem ILIKE ${searchTerm}) OR
+            EXISTS (SELECT 1 FROM unnest("desired_style_tone") elem WHERE elem ILIKE ${searchTerm}) OR
+            EXISTS (SELECT 1 FROM unnest("ai_action_process_dropdown") elem WHERE elem ILIKE ${searchTerm}) OR
+            EXISTS (SELECT 1 FROM unnest("required_tools_software") elem WHERE elem ILIKE ${searchTerm}) OR
+            EXISTS (SELECT 1 FROM unnest("required_hardware") elem WHERE elem ILIKE ${searchTerm}) OR
+            EXISTS (SELECT 1 FROM unnest("required_skills") elem WHERE elem ILIKE ${searchTerm}) OR
+            EXISTS (SELECT 1 FROM unnest("required_devices") elem WHERE elem ILIKE ${searchTerm}) OR
+            EXISTS (SELECT 1 FROM unnest("optimal_time_of_day") elem WHERE elem ILIKE ${searchTerm}) OR
+            EXISTS (SELECT 1 FROM unnest("related_portfolios") elem WHERE elem ILIKE ${searchTerm}) OR
+            EXISTS (SELECT 1 FROM unnest("related_projects") elem WHERE elem ILIKE ${searchTerm}) OR
+            EXISTS (SELECT 1 FROM unnest("related_sections") elem WHERE elem ILIKE ${searchTerm}) OR
+            EXISTS (SELECT 1 FROM unnest("related_entities") elem WHERE elem ILIKE ${searchTerm})
+            -- Boolean checks (match exact 'true' or 'false' case-insensitively)
+            ${booleanChecks}
+          )
+          ${aiWorkflowStatus ? Prisma.sql`AND "ai_workflow_status" = ${aiWorkflowStatus}` : Prisma.empty}
+          ${priority ? Prisma.sql`AND "priority" = ${priority}` : Prisma.empty}
+        ORDER BY "created_at" DESC;
+      `;
+
+      // Execute the raw query
+      tasks = await prisma.$queryRaw(query);
+
+      console.log(`Fetched ${tasks.length} tasks`);
+      return NextResponse.json(tasks);
+    } else {
+      // Specific Field 'Contains' Filters (Only if no global search)
+      if (nameContains) {
+        whereClause.name = { contains: nameContains, mode: 'insensitive' };
       }
-    }
-    
-    // Related tasks - similar approach to related entities
-    if (relatedTasks.length > 0) {
-      // Use OR conditions for text fields containing the terms
-      const orConditions = relatedTasks.map(task => ({
-        OR: [
-          // We need to use type 'any' for these complex where conditions
-          { related_tasks: { contains: task } } as any
-        ]
-      }));
-      
-      // Add these conditions to the main where clause
-      if (!whereClause.OR) {
-        whereClause.OR = orConditions;
-      } else {
-        whereClause.OR = [...whereClause.OR, ...orConditions.map(c => c.OR[0])];
+      if (descriptionContains) {
+        whereClause.description = { contains: descriptionContains, mode: 'insensitive' };
       }
-    }
-    
-    // Dropdown selections
-    if (financialAspect) {
-      whereClause.financial_aspect = financialAspect;
-    }
-    
-    if (taskType) {
-      whereClause.task_type = taskType;  
-    }
-    
-    if (deadlineType) {
-      whereClause.deadline_type = deadlineType;
-    }
-    
-    if (recurrenceFrequency) {
-      whereClause.recurrence_frequency = recurrenceFrequency;
-    }
-    
-    if (internetRequirement) {
-      whereClause.internet_requirement = internetRequirement;
-    }
-    
-    if (waitingFor) {
-      whereClause.waiting_for = waitingFor;
-    }
-    
-    // Multiselects - use Prisma's 'has' operator for arrays
-    if (requiredToolsSoftware.length > 0) {
-      // For multi-select fields that are String[]
-      if (requiredToolsSoftware.length > 1) {
-        const toolConditions = requiredToolsSoftware.map(tool => ({
-          required_tools_software: { has: tool }
-        }));
-        
-        if (!whereClause.OR) {
-          whereClause.OR = toolConditions;
-        } else {
-          whereClause.OR = [...whereClause.OR, ...toolConditions];
-        }
-      } else {
-        whereClause.required_tools_software = { has: requiredToolsSoftware[0] };
+      if (notesContains) {
+        whereClause.notes = { contains: notesContains, mode: 'insensitive' };
       }
-    }
-    
-    if (requiredHardware.length > 0) {
-      if (requiredHardware.length > 1) {
-        const hardwareConditions = requiredHardware.map(hw => ({
-          required_hardware: { has: hw }
-        }));
-        
-        if (!whereClause.OR) {
-          whereClause.OR = hardwareConditions;
-        } else {
-          whereClause.OR = [...whereClause.OR, ...hardwareConditions];
-        }
-      } else {
-        whereClause.required_hardware = { has: requiredHardware[0] };
+      if (subtasksContains) {
+        whereClause.subtasks_for_user = { contains: subtasksContains, mode: 'insensitive' };
       }
-    }
-    
-    if (requiredSkills.length > 0) {
-      if (requiredSkills.length > 1) {
-        const skillsConditions = requiredSkills.map(skill => ({
-          required_skills: { has: skill }
-        }));
-        
-        if (!whereClause.OR) {
-          whereClause.OR = skillsConditions;
-        } else {
-          whereClause.OR = [...whereClause.OR, ...skillsConditions];
-        }
-      } else {
-        whereClause.required_skills = { has: requiredSkills[0] };
+
+      // Date Filters
+      const dateFilters: any = {}; // Temporary object for date ranges
+      if (dueDateBefore) {
+        dateFilters.lte = new Date(dueDateBefore);
       }
-    }
-    
-    if (requiredDevices.length > 0) {
-      if (requiredDevices.length > 1) {
-        const deviceConditions = requiredDevices.map(device => ({
-          required_devices: { has: device }
-        }));
-        
-        if (!whereClause.OR) {
-          whereClause.OR = deviceConditions;
-        } else {
-          whereClause.OR = [...whereClause.OR, ...deviceConditions];
-        }
-      } else {
-        whereClause.required_devices = { has: requiredDevices[0] };
+      if (dueDateAfter) {
+        dateFilters.gte = new Date(dueDateAfter);
       }
-    }
-    
-    if (optimalTimeOfDay.length > 0) {
-      if (optimalTimeOfDay.length > 1) {
-        const timeConditions = optimalTimeOfDay.map(time => ({
-          optimal_time_of_day: { has: time }
-        }));
-        
-        if (!whereClause.OR) {
-          whereClause.OR = timeConditions;
-        } else {
-          whereClause.OR = [...whereClause.OR, ...timeConditions];
-        }
-      } else {
-        whereClause.optimal_time_of_day = { has: optimalTimeOfDay[0] };
+      if (Object.keys(dateFilters).length > 0) {
+        whereClause.due_date = dateFilters;
       }
-    }
-    
-    // AI action process dropdown - also an array field
-    if (aiActionProcessDropdown.length > 0) {
-      if (aiActionProcessDropdown.length > 1) {
-        const processConditions = aiActionProcessDropdown.map(process => ({
-          ai_action_process_dropdown: { has: process }
-        }));
-        
-        if (!whereClause.OR) {
-          whereClause.OR = processConditions;
-        } else {
-          whereClause.OR = [...whereClause.OR, ...processConditions];
-        }
-      } else {
-        whereClause.ai_action_process_dropdown = { has: aiActionProcessDropdown[0] };
+
+      const createdAtFilters: any = {};
+      if (createdAtBefore) {
+        createdAtFilters.lte = new Date(createdAtBefore);
       }
+      if (createdAtAfter) {
+        createdAtFilters.gte = new Date(createdAtAfter);
+      }
+      if (Object.keys(createdAtFilters).length > 0) {
+        whereClause.created_at = createdAtFilters;
+      }
+
+      // Simple Equality/Dropdown Filters
+      if (portfolio) {
+        whereClause.portfolio = { has: portfolio }; // Assuming single select for portfolio
+      }
+      if (project) {
+        whereClause.project = { has: project }; // Assuming single select for project
+      }
+      if (section) {
+        whereClause.section = { has: section }; // Assuming single select for section
+      }
+      if (priority) {
+        whereClause.priority = priority;
+      }
+
+      // Array Filters (has, hasSome, hasEvery)
+      // Tags (array contains ANY of the tags - 'hasSome')
+      if (tags.length > 0) {
+        whereClause.tags = { hasSome: tags };
+      }
+
+      // Related Entities (array contains ANY of the entities - 'hasSome')
+      if (relatedEntities.length > 0) {
+        whereClause.related_entities = { hasSome: relatedEntities };
+      }
+
+      // Related Tasks (array contains ANY of the tasks - 'hasSome')
+      // Assuming related_tasks is also an array field in Prisma
+      // if (relatedTasks.length > 0) { // Adjust if related_tasks is not an array field
+      //   whereClause.related_tasks = { hasSome: relatedTasks };
+      // }
+
+      // Multiselects (contains ANY - 'hasSome')
+      if (requiredToolsSoftware.length > 0) {
+        whereClause.required_tools_software = { hasSome: requiredToolsSoftware };
+      }
+      if (requiredHardware.length > 0) {
+        whereClause.required_hardware = { hasSome: requiredHardware };
+      }
+      if (requiredSkills.length > 0) {
+        whereClause.required_skills = { hasSome: requiredSkills };
+      }
+      if (requiredDevices.length > 0) {
+        whereClause.required_devices = { hasSome: requiredDevices };
+      }
+      if (optimalTimeOfDay.length > 0) {
+        whereClause.optimal_time_of_day = { hasSome: optimalTimeOfDay };
+      }
+
+      // AI Filters
+      if (aiWorkflowStatus) {
+        whereClause.ai_workflow_status = aiWorkflowStatus;
+      }
+      if (allowAutonomousExecution !== null && allowAutonomousExecution !== undefined) {
+        // Use explicit 'equals' filter for boolean
+        // Cast boolean to 'any' to bypass persistent incorrect type error
+        whereClause.allow_autonomous_execution = { equals: (allowAutonomousExecution === 'true') as any };
+      }
+      if (aiActionProcessDropdown.length > 0) {
+        whereClause.ai_action_process_dropdown = { hasSome: aiActionProcessDropdown };
+      }
+
+      // Range/Comparison Filters
+      if (cognitiveLoad) {
+        // Assign string value directly as per schema
+        whereClause.cognitive_load = cognitiveLoad;
+      }
+      if (energyLevelRequired) {
+        // Assign string value directly as per schema
+        whereClause.energy_level_required = energyLevelRequired;
+      }
+      const budgetFilters: any = {};
+      if (estimatedCostBudgetMin) {
+        budgetFilters.gte = parseFloat(estimatedCostBudgetMin);
+      }
+      if (estimatedCostBudgetMax) {
+        budgetFilters.lte = parseFloat(estimatedCostBudgetMax);
+      }
+      if (Object.keys(budgetFilters).length > 0) {
+        whereClause.estimated_cost_budget = budgetFilters;
+      }
+
+      // Specific Task ID Filter
+      if (taskId) {
+        whereClause.id = taskId; // Filter by specific task ID if provided
+      }
+
+      console.log("Constructed whereClause BEFORE findMany:", JSON.stringify(whereClause, null, 2));
+
+      // Fetch tasks from the database using the constructed where clause
+      tasks = await prisma.task.findMany({
+        where: whereClause,
+        orderBy: {
+          created_at: 'desc', // Order by creation date descending
+        },
+      });
+
+      console.log(`Fetched ${tasks.length} tasks`);
+      return NextResponse.json(tasks);
     }
-    
-    // AI fields
-    if (aiWorkflowStatus) {
-      whereClause.ai_workflow_status = aiWorkflowStatus;
-    }
-    
-    if (allowAutonomousExecution) {
-      whereClause.allow_autonomous_execution = allowAutonomousExecution;
-    }
-    
-    // Other filters
-    if (cognitiveLoad) {
-      whereClause.cognitive_load = cognitiveLoad;
-    }
-    
-    if (energyLevelRequired) {
-      whereClause.energy_level_required = energyLevelRequired;
-    }
-    
-    // Budget range
-    if (estimatedCostBudgetMin) {
-      whereClause.estimated_cost_budget = {
-        ...(whereClause.estimated_cost_budget || {}),
-        gte: parseFloat(estimatedCostBudgetMin),
-      };
-    }
-    
-    if (estimatedCostBudgetMax) {
-      whereClause.estimated_cost_budget = {
-        ...(whereClause.estimated_cost_budget || {}),
-        lte: parseFloat(estimatedCostBudgetMax),
-      };
-    }
-    
-    console.log('Filter conditions:', JSON.stringify(whereClause, null, 2));
-    
-    const tasks = await prisma.task.findMany({
-      where: whereClause,
-      orderBy: {
-        created_at: 'desc', // Order by newest first
-      },
-      // Consider adding pagination in future enhancements
-    });
-    
-    console.log(`Fetched ${tasks.length} tasks`);
-    return NextResponse.json(tasks);
-  } catch (error) {
-    console.error("API Error: Failed to fetch tasks:", error);
-    // Provide a slightly more specific error message to the client
-    let errorMessage = 'Internal Server Error: Could not fetch tasks.';
-    if (error instanceof Error) {
-      // You could potentially check for specific error types here,
-      // but avoid sending raw database errors directly to the client.
-      // For now, just indicate it might be a database issue.
-      errorMessage = `Failed to fetch tasks. Potential database issue: ${error.message}`;
-    }
+  } catch (error: any) { // Type error as any for logging
+    console.error("--- API ROUTE: GET /api/tasks ERROR ---");
+    console.error('Error fetching tasks:', error);
+    // Log the specific Prisma error message and code
+    console.error(`Prisma Error Code: ${error.code}, Message: ${error.message}`); 
+    // Log the full error structure for deeper inspection
+    console.error('Full Error Object:', JSON.stringify(error, null, 2)); 
     return NextResponse.json(
-      { error: errorMessage },
+      {
+        message: 'Failed to fetch tasks. Potential database issue.',
+        // Provide more structured error info to the frontend
+        errorDetails: { 
+          message: error.message,
+          code: error.code,
+          clientVersion: error.clientVersion // Included in Prisma errors
+        }
+      },
       { status: 500 }
     );
   }
@@ -412,7 +415,7 @@ export async function POST(request: Request) {
     // Return the full newly created task object
     return NextResponse.json(newTask, { status: 201 });
 
-  } catch (error: any) {
+  } catch (error: any) { // Type error as any for logging
     console.error("API Error: Failed to create task:", error);
 
     // Handle potential Prisma-specific errors (e.g., unique constraint violation)
@@ -518,7 +521,7 @@ export async function PATCH(request: Request) {
   
       console.log("Task updated successfully:", updatedTask);
       return NextResponse.json(updatedTask);
-    } catch (error: any) {
+    } catch (error: any) { // Type error as any for logging
       console.error("Prisma Error Details:", error);
       
       // Check for specific Prisma error codes
@@ -534,7 +537,7 @@ export async function PATCH(request: Request) {
         throw error; // Re-throw to be caught by outer catch
       }
     }
-  } catch (error: any) {
+  } catch (error: any) { // Type error as any for logging
     console.error("API Error: Failed to update task:", error);
 
     // Generic server error for other cases

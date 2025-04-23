@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils';
 import { TASK_FIELD_CONFIG, PORTFOLIO_PROJECT_SECTION } from '@/config/TASK_FIELD_CONFIG';
 import { getDefaultValue, RangeValue, AllFiltersState } from '@/lib/filterUtils'; // Import from filterUtils
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input"; // Import Input
 import { 
   Dialog, 
   DialogContent, 
@@ -37,6 +38,8 @@ export default function FilterBar({ onFilterChange }: FilterBarProps) {
 
   const [allFilters, setAllFilters] = useState<AllFiltersState>(() => initialState);
   const [isAdvancedFiltersOpen, setIsAdvancedFiltersOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState<string>(''); // State for raw search term
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState<string>(''); // State for debounced search term
 
   // Ref to store the initial filters to prevent calling onFilterChange on first render
   const initialFiltersRef = useRef(initialState);
@@ -114,6 +117,100 @@ export default function FilterBar({ onFilterChange }: FilterBarProps) {
     onFilterChange(newFilters);
   };
 
+  // Debounce search term input
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm);
+    }, 500); // 500ms debounce delay
+
+    // Cleanup function to clear the timeout if searchTerm changes before delay
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [searchTerm]);
+
+  // Final useEffect hook to synchronize state and notify parent
+  useEffect(() => {
+    // Calculate the final state including the current debounced search term
+    const finalFilters = { ...allFilters }; // Start with current state
+
+    // Remove the search key first to ensure we correctly add/remove it based on debouncedTerm
+    delete finalFilters.search;
+
+    if (debouncedSearchTerm.trim()) {
+      finalFilters.search = debouncedSearchTerm.trim(); // Add search if debounced term is present
+    }
+    // If debouncedSearchTerm is empty, 'search' remains deleted.
+
+    // Check if the calculated state is different from the current state BEFORE notifying parent
+    const hasChanged = JSON.stringify(allFilters) !== JSON.stringify(finalFilters);
+
+    // Always notify the parent component with the definitively calculated state
+    // This ensures HomePage gets the correct state regardless of local updates
+    console.log('>>> FilterBar: Sending finalFilters to parent:', JSON.stringify(finalFilters)); // Log the actual finalFilters object
+    onFilterChange(finalFilters);
+
+    // Update local state only if it actually changed to prevent potential loops
+    // This update happens *after* notifying the parent with the calculated state
+    if (hasChanged) {
+        console.log('FilterBar: Updating local state as it differs:', finalFilters);
+        setAllFilters(finalFilters);
+    }
+
+  }, [allFilters, debouncedSearchTerm, onFilterChange]); // Dependencies remain the same
+
+  const handleResetFilters = () => {
+    // Calculate the initial state
+    const initialState: AllFiltersState = {};
+    Object.keys(TASK_FIELD_CONFIG).forEach(key => {
+      const config = TASK_FIELD_CONFIG[key as keyof typeof TASK_FIELD_CONFIG];
+      if (config.filterable) {
+        initialState[key as keyof typeof TASK_FIELD_CONFIG] = config.defaultFilterValue ?? getDefaultValue(config);
+      }
+    });
+    initialState.hideEmptyFilters = true;
+
+    // Update local state
+    setAllFilters(initialState);
+    // Update parent state
+    onFilterChange(initialState);
+
+    // Also reset search term
+    setSearchTerm('');
+    // No need to manually set debouncedSearchTerm, the effect will handle it
+  };
+
+  const calculateActiveFilterCount = (filters: AllFiltersState): number => {
+    let count = 0;
+    Object.keys(filters).forEach(key => {
+      if (key === 'hideEmptyFilters') return;
+      const config = TASK_FIELD_CONFIG[key as keyof typeof TASK_FIELD_CONFIG];
+      if (!config || !config.filterable) return;
+
+      const value = filters[key as keyof AllFiltersState];
+      const defaultValue = config.defaultFilterValue ?? getDefaultValue(config);
+
+      if (Array.isArray(value)) {
+        if (value.length > 0) count++;
+      } else if (value !== defaultValue && value !== undefined && value !== null && value !== '') {
+        if (config.type === 'date' && Array.isArray(value) && value.every(d => d === undefined)) {
+        } else {
+          count++;
+        }
+      } else if (key === 'search' && typeof value === 'string' && value.trim() !== '') { // Count active search
+        count++;
+      }
+    });
+    return count;
+  };
+
+  const activeFilterCount = calculateActiveFilterCount(allFilters);
+
+  useEffect(() => {
+    console.log('FilterBar: useEffect detected change in allFilters, notifying parent:', allFilters);
+    onFilterChange(allFilters);
+  }, [allFilters, onFilterChange]); // Rerun when filters or the callback changes
+
   // Fetch options dynamically based on current selections
   const getProjectOptions = useCallback((): string[] => {
     const selectedPortfolios = allFilters.portfolio as string[] | undefined;
@@ -136,56 +233,6 @@ export default function FilterBar({ onFilterChange }: FilterBarProps) {
     }
     return TASK_FIELD_CONFIG.section?.options || [];
   }, [allFilters.portfolio, allFilters.project]);
-
-  const handleResetFilters = () => {
-    // Calculate the initial state
-    const initialState: AllFiltersState = {};
-    Object.keys(TASK_FIELD_CONFIG).forEach(key => {
-      const config = TASK_FIELD_CONFIG[key as keyof typeof TASK_FIELD_CONFIG];
-      if (config.filterable) {
-        initialState[key as keyof typeof TASK_FIELD_CONFIG] = config.defaultFilterValue ?? getDefaultValue(config);
-      }
-    });
-    initialState.hideEmptyFilters = true;
-
-    // Update local state
-    setAllFilters(initialState);
-    // Update parent state
-    onFilterChange(initialState);
-  };
-
-  const calculateActiveFilterCount = (filters: AllFiltersState): number => {
-    let count = 0;
-    Object.keys(filters).forEach(key => {
-      if (key === 'hideEmptyFilters') return;
-      const config = TASK_FIELD_CONFIG[key as keyof typeof TASK_FIELD_CONFIG];
-      if (!config || !config.filterable) return;
-
-      const value = filters[key as keyof AllFiltersState];
-      const defaultValue = config.defaultFilterValue ?? getDefaultValue(config);
-
-      if (Array.isArray(value)) {
-        if (value.length > 0) count++;
-      } else if (value !== defaultValue && value !== undefined && value !== null && value !== '') {
-        if (config.type === 'date' && Array.isArray(value) && value.every(d => d === undefined)) {
-        } else {
-          count++;
-        }
-      }
-    });
-    return count;
-  };
-
-  const activeFilterCount = calculateActiveFilterCount(allFilters);
-
-  useEffect(() => {
-    // Avoid calling on initial render if filters haven't changed meaningfully yet
-    // Simple check: if filters are not the initial state (this might need refinement)
-    if (JSON.stringify(allFilters) !== JSON.stringify(initialFiltersRef.current)) {
-        console.log('FilterBar: useEffect detected change in allFilters, notifying parent:', allFilters);
-        onFilterChange(allFilters);
-    }
-  }, [allFilters, onFilterChange]); // Rerun when filters or the callback changes
 
   // ---- MultiSelect Combobox Component ----
   interface MultiSelectComboboxProps {
@@ -301,6 +348,16 @@ export default function FilterBar({ onFilterChange }: FilterBarProps) {
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+        {/* Global Search Input */}
+        <div className="flex-grow min-w-[200px] max-w-[400px]">
+          <Input
+            placeholder="Search tasks..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="h-9"
+          />
+        </div>
+
         {/* Portfolio MultiSelect Filter */}
         <div className="flex-grow min-w-[200px]">
           <Label htmlFor="portfolio-filter" className="text-sm font-medium">Portfolio</Label>

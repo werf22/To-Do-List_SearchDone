@@ -10,6 +10,7 @@ datasource db {
 // Define the client generator (for Prisma Client)
 generator client {
   provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
 }
 
 // Define the core Task model based on TASK_FIELD_CONFIG
@@ -109,11 +110,11 @@ model Task {
   // --- Financials ---
   estimated_cost_budget         Float?                       // From config: estimated_cost_budget
   financial_return_value_speed  String?                      // From config: financial_return_value_speed
-  financial_aspect              String?   @default("Žiadny") // From config: financial_aspect (Added)
+  financial_aspect              String? @db.Text       // From config: financial_aspect
 
   // --- Input-Only Fields (Stored for Context/History) ---
-  suggested_initial_steps_subtasks String? @db.Text       // From config: suggested_initial_steps_subtasks
-  related_areas_for_ai_to_consider String? @db.Text       // From config: related_areas_for_ai_to_consider
+  suggested_initial_steps_subtasks  String? @db.Text       // From config: suggested_initial_steps_subtasks
+  related_areas_for_ai_to_consider  String? @db.Text       // From config: related_areas_for_ai_to_consider
   potential_dependencies_related_tasks String? @db.Text    // From config: potential_dependencies_related_tasks
 
   // Optional: Indexing for frequently queried fields

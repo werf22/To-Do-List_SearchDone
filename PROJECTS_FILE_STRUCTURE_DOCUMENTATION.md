@@ -4,9 +4,9 @@
 
 ### `/app` - Next.js App Router Core
 *   Contains all routing, page UI, layouts, and API endpoint logic as defined by the Next.js App Router convention.
-    *   `/app/page.tsx` - Main home page with task list, filters, and task creation form
+    *   `/app/page.tsx` - Main home page with task list, filters, and task creation form. **Manages the overall `filters` state and orchestrates fetching tasks from the API based on those filters, playing a crucial role in the search/filtering system.**
     *   `/app/tasks/[id]/page.tsx` - Task detail page with full editing capabilities. Displays task details and allows editing and deletion. Fetches data using the task ID from the URL. Includes form handling, state management, and interaction with the `/api/tasks/[id]` endpoint (GET, PATCH, DELETE). (Delete functionality added/verified 2025-04-22)
-    *   `/app/api/tasks/route.ts` - API endpoints for listing and creating tasks
+    *   `/app/api/tasks/route.ts` - API endpoints for listing and creating tasks. **Handles core task CRUD operations and retrieval, including filtering logic (e.g., parsing search parameters, applying Prisma filters, executing raw SQL searches), which is integral to the search/filtering system.**
     *   `/app/api/tasks/[id]/route.ts` - API endpoints for individual task operations (get, update, delete). Handles API requests for a specific task ID. Implements:
         *   `GET`: Retrieve details for a specific task.
         *   `PATCH`: Update details of a specific task.
@@ -17,7 +17,7 @@
 ### `/components` - UI Components
 *   All reusable UI components (forms, lists, field displays, etc.).
     *   `DeleteTaskButton.jsx` - Component for deleting tasks
-    *   `FilterBar.tsx` - Component for filtering tasks by various criteria
+    *   `FilterBar.tsx` - Component for filtering tasks by various criteria. **The main component responsible for rendering filter controls (search input, dropdowns, etc.) based on `TASK_FIELD_CONFIG` and notifying the parent page (`app/page.tsx`) of filter changes via the `onFilterChange` prop, playing a key role in the search/filtering system.**
     *   `ImportCSVModal.tsx` - Modal dialog for importing tasks from CSV files
     *   `SimpleTaskList.jsx` - Simple component for displaying tasks in a list format
     *   `TaskForm.tsx` - Component for adding new tasks
@@ -129,7 +129,6 @@
 ├── PROJECTS_FILE_STRUCTURE_DOCUMENTATION.md
 ├── README.md
 └── TASK.md
-```
 
 ### File Management Log
 *   [2025-04-22 16:28] Refined documentation in `csv_field_documentation.md` and `csv_input_form_documentation.md`.
