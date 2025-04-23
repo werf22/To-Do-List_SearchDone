@@ -1,0 +1,74 @@
+############################################################
+# Product Requirements Document (PRD) - AI To Do List App #
+############################################################
+
+**1. Introduction & Vision**
+
+This document outlines the requirements for the "AI To Do List App", a custom web application designed as a personal task and workflow management system for Jakub Cerulík. The core vision is to create a minimalist, fast, and highly efficient interface that leverages Artificial Intelligence (AI) to automate task categorization, enrichment, planning, and execution assistance, based on a detailed, predefined field structure and workflow. The application aims to replace reliance on external tools like Asana for this specific, personalized workflow, focusing on extreme simplicity and reliability.
+
+**2. Goals**
+
+*   **G1: Efficient Task Capture:** Provide an extremely simple and fast way to add new tasks with essential initial context.
+*   **G2: AI-Powered Organization:** Automatically categorize and enrich tasks by having AI populate a comprehensive set of predefined fields (Portfolio, Project, Section, Priority, Tags, Estimates, etc.) based on initial input.
+*   **G3: Clear Hierarchical View:** Enable easy navigation and visualization of tasks within the defined Portfolio -> Project -> Section -> Task -> Subtask hierarchy.
+*   **G4: Intelligent Task Assistance:** Offer AI chat capabilities both globally (across all tasks) and locally (within a specific task) to help with planning, content generation, research, and other actions defined in the task structure.
+*   **G5: Powerful Data Retrieval:** Implement robust filtering and sorting capabilities based on *any* defined task field, including complex cross-field queries.
+*   **G6: Streamlined Workflow Management:** Clearly track the state of each task, especially its interaction with the AI agent, using the `AI Workflow Status` field.
+*   **G7: Simplicity & Reliability:** Prioritize straightforward solutions and architecture to minimize development complexity and maximize stability and performance.
+*   **G8: Platform Accessibility:** Ensure the web application is responsive and usable on both desktop (Macbook) and mobile (iPhone).
+*   **G9: Data Portability:** Allow easy export of all task data into a CSV format, preserving the defined field structure.
+
+**3. Target User**
+
+*   Jakub Cerulík (Primary and only user for the initial versions).
+*   User Profile: Technically proficient, requires a highly structured and personalized task management system, leverages AI for productivity, values speed and efficiency.
+
+**4. Key Features (High-Level)**
+
+*   **F1: Task Creation:** Simple form for adding new tasks with core fields (Name, Goal, Input Data, etc.).
+*   **F2: AI Auto-Processing:** Backend process triggered after task creation where AI analyzes input and populates *all* relevant fields based on `TASK_FIELD_CONFIG` and `schema.prisma`.
+*   **F3: Task Data Model:** Implementation of the detailed task structure defined in `TASK_FIELD_CONFIG` and `schema.prisma`.
+*   **F4: Hierarchical View:** UI component displaying the Portfolio -> Project -> Section -> Task structure.
+*   **F5: List/Table View:** UI component displaying tasks in a filterable and sortable list/table.
+*   **F6: Task Detail View:** UI component displaying all fields for a selected task, allowing manual edits.
+*   **F7: Global AI Chat:** Dedicated chat interface for querying, updating, and managing tasks across the entire database via natural language commands interpreted by AI.
+*   **F8: Task-Specific AI Chat:** Chat interface integrated within the Task Detail View for contextual AI assistance related *only* to that task.
+*   **F9: Advanced Filtering/Sorting:** UI controls allowing filtering and sorting by any field defined in `TASK_FIELD_CONFIG`.
+*   **F10: CSV Export:** Functionality to export the current view or the entire task database to a CSV file.
+*   **F11: Basic Workflow Tracking:** Visual indicators and filtering based on the `AI Workflow Status` field.
+
+**5. Core User Workflow**
+
+1.  **Capture:** User quickly adds a new task via the form, providing essential details (Name, Goal, Context).
+2.  **AI Enrich:** System automatically triggers AI to categorize the task (Portfolio, Project, Section) and populate all other relevant fields (Priority, Tags, Estimates, AI Plans, etc.). Task status updates (e.g., to "Requires User Action" or "Ready for AI").
+3.  **Review/Plan:** User reviews the AI-enriched task in the Hierarchical or List view. User can manually adjust AI's categorization or other fields if needed.
+4.  **Interact (Optional):**
+    *   User uses the **Task-Specific Chat** for AI assistance (e.g., "Draft an email based on this task's goal", "Suggest 3 more steps for me").
+    *   User uses the **Global Chat** for broader actions (e.g., "Show all P1 tasks in the DJing portfolio due this week", "Change the status of task X to 'Done'").
+5.  **Execute:** User performs their required actions based on the task plan (`Subtasks (for user)`).
+6.  **Complete:** User marks the task as complete (`AI Workflow Status` = '6 - Hotovo').
+
+**6. Non-Goals (for MVP / Initial Versions)**
+
+*   **Direct Asana Integration:** This is explicitly excluded.
+*   **Multi-User Support / Collaboration:** Designed as a single-user application initially.
+*   **Complex Real-time Collaboration Features:** Not required.
+*   **Offline Mode:** Assumes online connectivity.
+*   **Advanced Reporting/Analytics Dashboards:** Basic filtering/sorting is sufficient initially.
+*   **Mobile Native Apps:** Web application targeting mobile browsers is sufficient.
+*   **Complex AI Learning/Fine-tuning:** Relies on standard LLM APIs with sophisticated prompting based on the defined structure, not custom model training initially.
+
+**7. Technical Stack (Summary)**
+
+*   Frontend: Next.js (React), TypeScript, Tailwind CSS, Shadcn/ui (or similar)
+*   Backend: Next.js API Routes, TypeScript
+*   Database: PostgreSQL (via Prisma ORM)
+*   AI: OpenAI API (or similar LLM provider)
+
+**8. Success Metrics (Initial)**
+
+*   Speed and ease of task capture.
+*   Accuracy and completeness of AI auto-categorization/enrichment.
+*   User's subjective feeling of efficiency and control over tasks.
+*   Ability to reliably filter and find tasks based on any field.
+*   Stability and performance of the application.

@@ -1,0 +1,432 @@
+task_id;name;description;notes;task_comments;portfolio;project;section;parent_task;parent_task_id;subtasks_for_user;subtasks_for_ai;subtasks_in_system;subtasks_id_in_system;ai_brainstorm_ideas_on_how_it_can_help_me;dependents;dependents_id;outgoing_dependents;outgoing_dependents_id;tags;priority;due_date;start_date;deadline_type;recurrence_frequency;created_at;completed_at;last_modified_at;task_goal;input_data_context;desired_output_format;ai_action_process_free_text;ai_action_process_dropdown;ai_workflow_status;allow_autonomous_execution;number_of_variations;desired_style_tone;specific_constraints_instructions;ai_behavior_on_uncertainty;ai_creativity_level;ai_processing_priority;ai_agent_status_log;ai_output_result_link;action_required_from_user;related_portfolios;related_projects;related_sections;related_tasks;related_tasks_id;related_entities;target_audience;task_purpose;type;task_type;estimated_user_time;cognitive_load;energy_level_required;required_tools_software;required_hardware;required_skills;estimated_cost_budget;expected_impact_success_metric;location;execution_location;required_devices;internet_requirement;focus_requirement;optimal_time_of_day;assignee;collaborators;related_entity;waiting_for;financial_return_value_speed;ai_output_rating;feedback_for_ai;suggested_initial_steps_subtasks;related_areas_for_ai_to_consider;potential_dependencies_related_tasks;financial_aspect
+1;Nastaviť s Maťom grafiku na Social Media;NaN;"ℹ️ Kľúčové Info:
+    Termín Dokončenia: 2024-07-22 (Hard Deadline)
+    Priorita: P0 - NOW
+    Miesto Úlohy (Kontext): Online / Bratislava
+    Miesto Vykonania (Pre Teba): Domov - Pracovňa / Kancelária/Cowork
+🎯 Cieľ Úlohy:
+    Definovaný cieľ pre: Nastaviť s Maťom grafiku na Social Media
+➡️ Tvoj Najbližší Krok & Náročnosť:
+    Akcia: Spracovať úlohu a pripraviť pre AI (doplniť ciele, vstupy).
+    Odhadovaný Čas (Ty): 1-2 hod
+    Kognitívna Záťaž (Ty): Stredná
+    Potrebná Energia (Ty): Stredná
+    Potrebné Nástroje/Softvér (Ty): Instagram App/Web;Slack;Canva;Asana;Social Media Scheduler;Facebook App/Web;Figma
+📋 Celý Plán Pre Teba (Aktívne Podúlohy):
+- [ ] Pripraviť podklady a brief pre grafika.
+- [ ] Zorganizovať stretnutie/konzultáciu s grafikom.
+- [ ] Poskytnúť grafikovi spätnú väzbu na prvé návrhy.
+- [ ] Schváliť finálny návrh grafiky.
+- [ ] Zabezpečiť dodanie finálnych súborov v požadovaných formátoch.
+- [ ] Integrovať grafiku do cieľových materiálov.
+- [ ] Skontrolovať výslednú implementáciu.
+💡 Výstup AI (Výsledok/Link):
+    NaN
+🤖 Čo Urobila AI (Posledná Akcia):
+    NaN
+⏙ Celý Plán Pre AI (Navrhované kroky ako a plán čo spraví a ako bude postupovať)
+    NaN
+🦾 AI Nápady Ako Mi Môže Pomôcť:
+- Vyhľadať inšpiráciu pre grafický štýl na Pintereste/Behance.
+- Navrhnúť 3 farebné palety podľa zadania.
+- Vytvoriť moodboard pre vizuálnu identitu.
+- Pripraviť zoznam otázok pre úvodnú konzultáciu s grafikom.
+- Analyzovať vizuálny štýl konkurencie.
+- Nájsť vhodné fonty pre projekt.
+- Zhrnúť kľúčové požiadavky na grafiku do bodov.
+- Navrhnúť štruktúru pre grafické šablóny.
+- Vyhľadať royalty-free ikony alebo ilustrácie k téme.
+- Skontrolovať finálne návrhy z hľadiska technických požiadaviek (rozlíšenie, formát).
+❓ Čo Potrebuje AI (Ak Čaká):
+    Spracovať úlohu a pripraviť pre AI (doplniť ciele, vstupy).
+⚙️ Kľúčové Vstupy & Kontext (Pre Teba):
+    Hlavný účel (stručne): Definovaný účel pre: Nastaviť s Maťom grafiku na Social Media
+    Cieľovka (stručne): Sledovatelia sociálnych médií
+    Kľúčové slová: NaN
+    Kľúčový zdroj/vstup: NaN
+    Kľúčové obmedzenia: NaN
+🔗 Súvisiace Úlohy/Zdroje (Ak Relevantné):
+    Nadradená úloha: NaN
+    Podradené úlohy: NaN
+    Súvisiace úlohy: Affiliate Marketing nastaviť (5); Nastaviť Custom GPTs (67); Začať follow venues kde sú eventu ktoré mám rád a nastaviť to ako predvolene (72)
+    Závisí od: NaN
+    Blokuje: NaN
+    Ďalšie súvislosti: Závisí od: NaN; Blokuje: NaN; Súvisí s: Affiliate Marketing nastaviť;Nastaviť Custom GPTs;Začať follow venues kde sú eventu ktoré mám rád a nastaviť to ako predvolene
+✅ Kroky, ktoré som už vykonal:
+    NaN";[INITIAL TASK CREATION];Social Media & Marketing (Marketing);"Stratégia & Branding - Centrálny (Marketing); Sociálne Médiá - Správa & Obsah (Marketing)";"Brand & Vizuálna Identita (Stratégia & Branding - Centrálny (Marketing)); Tvorba Obsahu (Grafika, Video, Text) (Sociálne Médiá - Správa & Obsah (Marketing))";NaN;NaN;"1. Pripraviť podklady a brief pre grafika.
+2. Zorganizovať stretnutie/konzultáciu s grafikom.
+3. Poskytnúť grafikovi spätnú väzbu na prvé návrhy.
+4. Schváliť finálny návrh grafiky.
+5. Zabezpečiť dodanie finálnych súborov v požadovaných formátoch.
+6. Integrovať grafiku do cieľových materiálov.
+7. Skontrolovať výslednú implementáciu.";NaN;NaN;NaN;"1. Vyhľadať inšpiráciu pre grafický štýl na Pintereste/Behance.
+2. Navrhnúť 3 farebné palety podľa zadania.
+3. Vytvoriť moodboard pre vizuálnu identitu.
+4. Pripraviť zoznam otázok pre úvodnú konzultáciu s grafikom.
+5. Analyzovať vizuálny štýl konkurencie.
+6. Nájsť vhodné fonty pre projekt.
+7. Zhrnúť kľúčové požiadavky na grafiku do bodov.
+8. Navrhnúť štruktúru pre grafické šablóny.
+9. Vyhľadať royalty-free ikony alebo ilustrácie k téme.
+10. Skontrolovať finálne návrhy z hľadiska technických požiadaviek (rozlíšenie, formát).";NaN;NaN;NaN;NaN;"#Nástroj:Canva;#Typ:Kreatíva/Dizajn/Grafický;#Téma:Marketing/SocialMediaMarketing;#Zdroj:VlastnýNápad;#Typ:RozhodovanieTaktické;#Téma:Marketing/Branding;#Kontext:VyžadujeSpoluprácu;#Typ:Komunikácia/MeetingOffline;#Metóda:Agile;#Spolupráca:MaťoGrafik;#Kontext:PC;#Vplyv:Energia/Neutrálne;#Nástroj:Asana;#Oblasť:Marketing/StratégiaBranding;#Nástroj:Facebook;#Nástroj:Instagram;#Oblasť:Marketing/SocMedia;#Fin:NepriamyVplyv;#Stav:Plánovanie;#Nástroj:Figma";P0 - NOW;2024-07-22;NaN;Hard Deadline;Neopakuje sa;NaN;NaN;2025-04-22;Definovaný cieľ pre: Nastaviť s Maťom grafiku na Social Media;"Prečo? (Účel/Motivácia):
+    [Doplniť účel pre 'Nastaviť s Maťom grafiku na Social Media']
+Cieľovka? (Publikum):
+    [Doplniť cieľovku pre 'Nastaviť s Maťom grafiku na Social Media']
+Miesto? (Ak relevantné):
+    [Doplniť miesto pre 'Nastaviť s Maťom grafiku na Social Media']
+Nástroje? (Preferované/Potrebné):
+    [Doplniť nástroje pre 'Nastaviť s Maťom grafiku na Social Media']
+Kontext/Brief? (Ďalšie Info):
+    [Doplniť kontext pre 'Nastaviť s Maťom grafiku na Social Media']
+Kroky (Návrh pre AI)?:
+    [Doplniť návrh krokov pre 'Nastaviť s Maťom grafiku na Social Media']
+Zdroje (Linky/Dokumenty):
+    [Doplniť zdroje pre 'Nastaviť s Maťom grafiku na Social Media']
+Keywords (Kľúčové slová):
+    [Doplniť kľúčové slová pre 'Nastaviť s Maťom grafiku na Social Media']
+Ostatné:
+    [Doplniť ostatné info pre 'Nastaviť s Maťom grafiku na Social Media']";NaN;NaN;NaN;1 - Nová (v Inboxe);Nie (Len Pripraviť / Vyžaduje Moju Akciu);NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;Spracovať úlohu a pripraviť pre AI (doplniť ciele, vstupy).;NaN;Sociálne Médiá - Správa & Obsah (Marketing);Tvorba Obsahu (Grafika, Video, Text) (Sociálne Médiá - Správa & Obsah (Marketing));"Affiliate Marketing nastaviť;Nastaviť Custom GPTs;Začať follow venues kde sú eventu ktoré mám rád a nastaviť to ako predvolene";"5;67;72";Maťo Grafik;Sledovatelia sociálnych médií;Definovaný účel pre: Nastaviť s Maťom grafiku na Social Media;Task;Rozhodovanie / Schvaľovanie;1-2 hod;Stredná;Stredná;"Instagram App/Web;Slack;Canva;Asana;Social Media Scheduler;Facebook App/Web;Figma";PC / Laptop (Všeobecne);"Skill:PoskytovanieFeedbacku;Skill:Komunikácia/Verbálna;Skill:GrafickýDizajn";0;Definovaná metrika úspechu pre: Nastaviť s Maťom grafiku na Social Media;Online / Bratislava;Domov - Pracovňa / Kancelária/Cowork;PC/Laptop;Nevyhnutný (Online);Stredná;Poobede Blok 2 (15:00-16:00) - Komunikácia & Admin;Jakub Cerulík;NaN;Maťo Grafik;User Input / Decision;Nerelevantné / Neviem Odhadnúť;NaN;NaN;NaN;"Social Media & Marketing (Marketing); Stratégia & Branding - Centrálny (Marketing);  Sociálne Médiá - Správa & Obsah (Marketing); Brand & Vizuálna Identita (Stratégia & Branding - Centrálny (Marketing));  Tvorba Obsahu (Grafika, Video, Text) (Sociálne Médiá - Správa & Obsah (Marketing))";"Závisí od: NaN; Blokuje: NaN; Súvisí s: Affiliate Marketing nastaviť;Nastaviť Custom GPTs;Začať follow venues kde sú eventu ktoré mám rád a nastaviť to ako predvolene";#Fin:Žiadny
+2;Čo má byť obsah? Terapia? Koučing? Cvičenia?...;NaN;"ℹ️ Kľúčové Info:
+    Termín Dokončenia: NaN (No Deadline / Ongoing)
+    Priorita: P3 - Medium
+    Miesto Úlohy (Kontext): Nezáleží
+    Miesto Vykonania (Pre Teba): Nezáleží / Domov - Pracovňa
+🎯 Cieľ Úlohy:
+    Definovaný cieľ pre: Čo má byť obsah? Terapia? Koučing? Cvičenia?...
+➡️ Tvoj Najbližší Krok & Náročnosť:
+    Akcia: Spracovať úlohu a pripraviť pre AI (doplniť ciele, vstupy).
+    Odhadovaný Čas (Ty): 15-30 min
+    Kognitívna Záťaž (Ty): Vysoká
+    Potrebná Energia (Ty): Stredná
+    Potrebné Nástroje/Softvér (Ty): TextovýEditor;Web Browser;Asana
+📋 Celý Plán Pre Teba (Aktívne Podúlohy):
+- [ ] Definovať hlavné témy a kľúčové posolstvá obsahu.
+- [ ] Vytvoriť osnovu alebo štruktúru obsahu.
+- [ ] Napísať prvý draft textu/scenára.
+- [ ] Skontrolovať a editovať draft.
+- [ ] Zabezpečiť grafické prvky alebo vizuály k obsahu.
+- [ ] Finalizovať a schváliť obsah.
+- [ ] Publikovať obsah na relevantných platformách.
+💡 Výstup AI (Výsledok/Link):
+    NaN
+🤖 Čo Urobila AI (Posledná Akcia):
+    NaN
+⏙ Celý Plán Pre AI (Navrhované kroky ako a plán čo spraví a ako bude postupovať)
+    NaN
+🦾 AI Nápady Ako Mi Môže Pomôcť:
+- Vygenerovať 5 návrhov nadpisov pre článok/post.
+- Vytvoriť podrobnú osnovu obsahu s kľúčovými bodmi.
+- Napísať úvodný odsek pre blogový príspevok.
+- Zhrnúť hlavné myšlienky z poskytnutého zdroja.
+- Navrhnúť výzvu k akcii (CTA) pre koniec textu.
+- Nájsť relevantné štatistiky alebo dáta k téme.
+- Preformulovať časť textu do iného štýlu (napr. formálnejší/neformálnejší).
+- Skontrolovať text na gramatické chyby a preklepy.
+- Vytvoriť krátky súhrn obsahu pre sociálne médiá.
+- Navrhnúť kľúčové slová pre SEO optimalizáciu.
+❓ Čo Potrebuje AI (Ak Čaká):
+    Spracovať úlohu a pripraviť pre AI (doplniť ciele, vstupy).
+⚙️ Kľúčové Vstupy & Kontext (Pre Teba):
+    Hlavný účel (stručne): Definovaný účel pre: Čo má byť obsah? Terapia? Koučing? Cvičenia?...
+    Cieľovka (stručne): Ja (interné)
+    Kľúčové slová: NaN
+    Kľúčový zdroj/vstup: NaN
+    Kľúčové obmedzenia: NaN
+🔗 Súvisiace Úlohy/Zdroje (Ak Relevantné):
+    Nadradená úloha: NaN
+    Podradené úlohy: NaN
+    Súvisiace úlohy: Reelska robiť čo najviac (15); Kúpiť lampičky malé k mixu nech vidím v tme - také čo môžem dať zo spodu stojana (50); Preniesť AI produkty čo mám na Bubble do Shortcuts a Custom GPTs (104)
+    Závisí od: NaN
+    Blokuje: NaN
+    Ďalšie súvislosti: Závisí od: NaN; Blokuje: NaN; Súvisí s: Reelska robiť čo najviac;Kúpiť lampičky malé k mixu nech vidím v tme - také čo môžem dať zo spodu stojana;Preniesť AI produkty čo mám na Bubble do Shortcuts a Custom GPTs
+✅ Kroky, ktoré som už vykonal:
+    NaN";[INITIAL TASK CREATION];Projekty & Produkty (Nápady);ZHRNUTIE (Nápady);INBOX (ZHRNUTIE (Nápady));NaN;NaN;"1. Definovať hlavné témy a kľúčové posolstvá obsahu.
+2. Vytvoriť osnovu alebo štruktúru obsahu.
+3. Napísať prvý draft textu/scenára.
+4. Skontrolovať a editovať draft.
+5. Zabezpečiť grafické prvky alebo vizuály k obsahu.
+6. Finalizovať a schváliť obsah.
+7. Publikovať obsah na relevantných platformách.";NaN;NaN;NaN;"1. Vygenerovať 5 návrhov nadpisov pre článok/post.
+2. Vytvoriť podrobnú osnovu obsahu s kľúčovými bodmi.
+3. Napísať úvodný odsek pre blogový príspevok.
+4. Zhrnúť hlavné myšlienky z poskytnutého zdroja.
+5. Navrhnúť výzvu k akcii (CTA) pre koniec textu.
+6. Nájsť relevantné štatistiky alebo dáta k téme.
+7. Preformulovať časť textu do iného štýlu (napr. formálnejší/neformálnejší).
+8. Skontrolovať text na gramatické chyby a preklepy.
+9. Vytvoriť krátky súhrn obsahu pre sociálne médiá.
+10. Navrhnúť kľúčové slová pre SEO optimalizáciu.";NaN;NaN;NaN;NaN;"#Typ:Kreatíva/Konceptualizácia;#Zdroj:VlastnýNápad;#Fin:NepriamyVplyv;#Metóda:Agile;#Kontext:PC;#Stav:Plánovanie;#Vplyv:Energia/Neutrálne;#Typ:RozhodovanieStrategické;#Nástroj:Asana;#Typ:Research/AnalýzaKonkurencie";P3 - Medium;NaN;NaN;No Deadline / Ongoing;Neopakuje sa;NaN;NaN;2025-04-22;Definovaný cieľ pre: Čo má byť obsah? Terapia? Koučing? Cvičenia?...;"Prečo? (Účel/Motivácia):
+    [Doplniť účel pre 'Čo má byť obsah? Terapia? Koučing? Cvičenia?...']
+Cieľovka? (Publikum):
+    [Doplniť cieľovku pre 'Čo má byť obsah? Terapia? Koučing? Cvičenia?...']
+Miesto? (Ak relevantné):
+    [Doplniť miesto pre 'Čo má byť obsah? Terapia? Koučing? Cvičenia?...']
+Nástroje? (Preferované/Potrebné):
+    [Doplniť nástroje pre 'Čo má byť obsah? Terapia? Koučing? Cvičenia?...']
+Kontext/Brief? (Ďalšie Info):
+    [Doplniť kontext pre 'Čo má byť obsah? Terapia? Koučing? Cvičenia?...']
+Kroky (Návrh pre AI)?:
+    [Doplniť návrh krokov pre 'Čo má byť obsah? Terapia? Koučing? Cvičenia?...']
+Zdroje (Linky/Dokumenty):
+    [Doplniť zdroje pre 'Čo má byť obsah? Terapia? Koučing? Cvičenia?...']
+Keywords (Kľúčové slová):
+    [Doplniť kľúčové slová pre 'Čo má byť obsah? Terapia? Koučing? Cvičenia?...']
+Ostatné:
+    [Doplniť ostatné info pre 'Čo má byť obsah? Terapia? Koučing? Cvičenia?...']";NaN;NaN;NaN;1 - Nová (v Inboxe);Nie (Len Pripraviť / Vyžaduje Moju Akciu);NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;Spracovať úlohu a pripraviť pre AI (doplniť ciele, vstupy).;NaN;NaN;NaN;"Reelska robiť čo najviac;Kúpiť lampičky malé k mixu nech vidím v tme - také čo môžem dať zo spodu stojana;Preniesť AI produkty čo mám na Bubble do Shortcuts a Custom GPTs";"15;50;104";NaN;Ja (interné);Definovaný účel pre: Čo má byť obsah? Terapia? Koučing? Cvičenia?...;Task;Rozhodovanie / Schvaľovanie;15-30 min;Vysoká;Stredná;"TextovýEditor;Web Browser;Asana";PC / Laptop (Všeobecne);"Skill:KreatívneMyslenie/GenerovanieNápadov;Skill:StrategickéPlánovanie;Skill:Marketing/ContentMarketing";0;Definovaná metrika úspechu pre: Čo má byť obsah? Terapia? Koučing? Cvičenia?...;Nezáleží;Nezáleží / Domov - Pracovňa;"PC/Laptop;Mobil (iOS/Android)";Vhodný (Offline obmedzené);Vysoká (Deep Work);Doobeda (8:30-11:30) - Hlboká Práca (Kreatíva/Kognitíva);Jakub Cerulík;NaN;NaN;User Input / Decision;Nerelevantné / Neviem Odhadnúť;NaN;NaN;NaN;"Projekty & Produkty (Nápady); ZHRNUTIE (Nápady); INBOX (ZHRNUTIE (Nápady))";"Závisí od: NaN; Blokuje: NaN; Súvisí s: Reelska robiť čo najviac;Kúpiť lampičky malé k mixu nech vidím v tme - také čo môžem dať zo spodu stojana;Preniesť AI produkty čo mám na Bubble do Shortcuts a Custom GPTs";#Fin:Žiadny
+3;ChatGPT alebo Kopírovanie?;NaN;"ℹ️ Kľúčové Info:
+    Termín Dokončenia: NaN (No Deadline / Ongoing)
+    Priorita: P3 - Medium
+    Miesto Úlohy (Kontext): Nezáleží
+    Miesto Vykonania (Pre Teba): Nezáleží / Domov - Pracovňa
+🎯 Cieľ Úlohy:
+    Definovaný cieľ pre: ChatGPT alebo Kopírovanie?
+➡️ Tvoj Najbližší Krok & Náročnosť:
+    Akcia: Spracovať úlohu a pripraviť pre AI (doplniť ciele, vstupy).
+    Odhadovaný Čas (Ty): 15-30 min
+    Kognitívna Záťaž (Ty): Stredná
+    Potrebná Energia (Ty): Stredná
+    Potrebné Nástroje/Softvér (Ty): ChatGPT (Web UI);Asana
+📋 Celý Plán Pre Teba (Aktívne Podúlohy):
+- [ ] Analyzovať výhody a nevýhody použitia ChatGPT.
+- [ ] Analyzovať výhody a nevýhody kopírovania/adaptácie obsahu.
+- [ ] Zvážiť etické a právne aspekty oboch prístupov.
+- [ ] Porovnať oba prístupy s cieľmi a zdrojmi.
+- [ ] Urobiť finálne strategické rozhodnutie.
+- [ ] Zdokumentovať rozhodnutie a ďalší postup.
+💡 Výstup AI (Výsledok/Link):
+    NaN
+🤖 Čo Urobila AI (Posledná Akcia):
+    NaN
+⏙ Celý Plán Pre AI (Navrhované kroky ako a plán čo spraví a ako bude postupovať)
+    NaN
+🦾 AI Nápady Ako Mi Môže Pomôcť:
+- Zhrnúť výhody a nevýhody používania AI pri tvorbe obsahu.
+- Analyzovať etické dilemy spojené s kopírovaním obsahu.
+- Porovnať časovú náročnosť oboch prístupov.
+- Nájsť príklady úspešného využitia AI v content marketingu.
+- Vyhľadať nástroje na detekciu plagiátorstva.
+- Navrhnúť stratégiu pre adaptáciu obsahu s pridanou hodnotou.
+- Posúdiť vplyv oboch metód na SEO.
+- Vytvoriť rozhodovací strom pre výber metódy tvorby obsahu.
+- Analyzovať, ako oba prístupy rezonujú s rôznymi cieľovými skupinami.
+- Pripraviť argumenty pre prezentáciu finálneho rozhodnutia.
+❓ Čo Potrebuje AI (Ak Čaká):
+    Spracovať úlohu a pripraviť pre AI (doplniť ciele, vstupy).
+⚙️ Kľúčové Vstupy & Kontext (Pre Teba):
+    Hlavný účel (stručne): Definovaný účel pre: ChatGPT alebo Kopírovanie?
+    Cieľovka (stručne): Ja (interné)
+    Kľúčové slová: NaN
+    Kľúčový zdroj/vstup: NaN
+    Kľúčové obmedzenia: NaN
+🔗 Súvisiace Úlohy/Zdroje (Ak Relevantné):
+    Nadradená úloha: NaN
+    Podradené úlohy: NaN
+    Súvisiace úlohy: Nastaviť si CHATGPT ako sparing partnera na rozprávanie sa (106); Zoradiť cvičenia v lekcii a nechať ChatGPT vytvoriť príbeh (409)
+    Závisí od: NaN
+    Blokuje: NaN
+    Ďalšie súvislosti: Závisí od: NaN; Blokuje: NaN; Súvisí s: Nastaviť si CHATGPT ako sparing partnera na rozprávanie sa;Zoradiť cvičenia v lekcii a nechať ChatGPT vytvoriť príbeh
+✅ Kroky, ktoré som už vykonal:
+    NaN";[INITIAL TASK CREATION];Projekty & Produkty (Nápady);ZHRNUTIE (Nápady);INBOX (ZHRNUTIE (Nápady));NaN;NaN;"1. Analyzovať výhody a nevýhody použitia ChatGPT.
+2. Analyzovať výhody a nevýhody kopírovania/adaptácie obsahu.
+3. Zvážiť etické a právne aspekty oboch prístupov.
+4. Porovnať oba prístupy s cieľmi a zdrojmi.
+5. Urobiť finálne strategické rozhodnutie.
+6. Zdokumentovať rozhodnutie a ďalší postup.";NaN;NaN;NaN;"1. Zhrnúť výhody a nevýhody používania AI pri tvorbe obsahu.
+2. Analyzovať etické dilemy spojené s kopírovaním obsahu.
+3. Porovnať časovú náročnosť oboch prístupov.
+4. Nájsť príklady úspešného využitia AI v content marketingu.
+5. Vyhľadať nástroje na detekciu plagiátorstva.
+6. Navrhnúť stratégiu pre adaptáciu obsahu s pridanou hodnotou.
+7. Posúdiť vplyv oboch metód na SEO.
+8. Vytvoriť rozhodovací strom pre výber metódy tvorby obsahu.
+9. Analyzovať, ako oba prístupy rezonujú s rôznymi cieľovými skupinami.
+10. Pripraviť argumenty pre prezentáciu finálneho rozhodnutia.";NaN;NaN;NaN;NaN;"#Typ:Kreatíva/Konceptualizácia;#Zdroj:VlastnýNápad;#Fin:NepriamyVplyv;#Metóda:Agile;#Téma:AI/LLM;#Kontext:PC;#Stav:Plánovanie;#Vplyv:Energia/Neutrálne;#Typ:RozhodovanieStrategické;#Nástroj:ChatGPT;#Nástroj:Asana;#Typ:Research/AnalýzaKonkurencie";P3 - Medium;NaN;NaN;No Deadline / Ongoing;Neopakuje sa;NaN;NaN;2025-04-22;Definovaný cieľ pre: ChatGPT alebo Kopírovanie?;"Prečo? (Účel/Motivácia):
+    [Doplniť účel pre 'ChatGPT alebo Kopírovanie?']
+Cieľovka? (Publikum):
+    [Doplniť cieľovku pre 'ChatGPT alebo Kopírovanie?']
+Miesto? (Ak relevantné):
+    [Doplniť miesto pre 'ChatGPT alebo Kopírovanie?']
+Nástroje? (Preferované/Potrebné):
+    [Doplniť nástroje pre 'ChatGPT alebo Kopírovanie?']
+Kontext/Brief? (Ďalšie Info):
+    [Doplniť kontext pre 'ChatGPT alebo Kopírovanie?']
+Kroky (Návrh pre AI)?:
+    [Doplniť návrh krokov pre 'ChatGPT alebo Kopírovanie?']
+Zdroje (Linky/Dokumenty):
+    [Doplniť zdroje pre 'ChatGPT alebo Kopírovanie?']
+Keywords (Kľúčové slová):
+    [Doplniť kľúčové slová pre 'ChatGPT alebo Kopírovanie?']
+Ostatné:
+    [Doplniť ostatné info pre 'ChatGPT alebo Kopírovanie?']";NaN;NaN;NaN;1 - Nová (v Inboxe);Nie (Len Pripraviť / Vyžaduje Moju Akciu);NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;Spracovať úlohu a pripraviť pre AI (doplniť ciele, vstupy).;NaN;NaN;NaN;"Nastaviť si CHATGPT ako sparing partnera na rozprávanie sa;Zoradiť cvičenia v lekcii a nechať ChatGPT vytvoriť príbeh";"106;409";NaN;Ja (interné);Definovaný účel pre: ChatGPT alebo Kopírovanie?;Task;Rozhodovanie / Schvaľovanie;15-30 min;Stredná;Stredná;"ChatGPT (Web UI);Asana";PC / Laptop (Všeobecne);"Skill:Rozhodovanie;Skill:KritickéMyslenie";0;Definovaná metrika úspechu pre: ChatGPT alebo Kopírovanie?;Nezáleží;Nezáleží / Domov - Pracovňa;"PC/Laptop;Mobil (iOS/Android)";Vhodný (Offline obmedzené);Vysoká (Deep Work);Doobeda (8:30-11:30) - Hlboká Práca (Kreatíva/Kognitíva);Jakub Cerulík;NaN;NaN;User Input / Decision;Nerelevantné / Neviem Odhadnúť;NaN;NaN;NaN;"Projekty & Produkty (Nápady); ZHRNUTIE (Nápady); INBOX (ZHRNUTIE (Nápady))";"Závisí od: NaN; Blokuje: NaN; Súvisí s: Nastaviť si CHATGPT ako sparing partnera na rozprávanie sa;Zoradiť cvičenia v lekcii a nechať ChatGPT vytvoriť príbeh";#Fin:Žiadny
+4;Nájsť influencerov od ktorých budem kopčiť;NaN;"ℹ️ Kľúčové Info:
+    Termín Dokončenia: NaN (No Deadline / Ongoing)
+    Priorita: P3 - Medium
+    Miesto Úlohy (Kontext): Online
+    Miesto Vykonania (Pre Teba): Nezáleží / Domov - Pracovňa
+🎯 Cieľ Úlohy:
+    Definovaný cieľ pre: Nájsť influencerov od ktorých budem kopčiť
+➡️ Tvoj Najbližší Krok & Náročnosť:
+    Akcia: Spracovať úlohu a pripraviť pre AI (doplniť ciele, vstupy).
+    Odhadovaný Čas (Ty): 1-2 hod
+    Kognitívna Záťaž (Ty): Stredná
+    Potrebná Energia (Ty): Stredná
+    Potrebné Nástroje/Softvér (Ty): Web Browser;Asana
+📋 Celý Plán Pre Teba (Aktívne Podúlohy):
+- [ ] Definovať kritériá pre výber relevantných influencerov.
+- [ ] Vyhľadať influencerov na sociálnych sieťach a iných platformách.
+- [ ] Analyzovať profily, obsah a engagement vybraných influencerov.
+- [ ] Vytvoriť zoznam top 5-10 influencerov pre inšpiráciu.
+- [ ] Zdokumentovať kľúčové poznatky a príklady ich obsahu.
+- [ ] Uložiť informácie pre budúce použitie pri tvorbe obsahu.
+💡 Výstup AI (Výsledok/Link):
+    NaN
+🤖 Čo Urobila AI (Posledná Akcia):
+    NaN
+⏙ Celý Plán Pre AI (Navrhované kroky ako a plán čo spraví a ako bude postupovať)
+    NaN
+🦾 AI Nápady Ako Mi Môže Pomôcť:
+- Identifikovať kľúčové platformy, kde sa nachádzajú influenceri v danej oblasti.
+- Navrhnúť kritériá pre hodnotenie relevancie influencerov.
+- Vytvoriť šablónu pre záznam informácií o influenceroch.
+- Analyzovať typy obsahu, ktoré majú u vybraných influencerov najväčší úspech.
+- Nájsť nástroje na analýzu metrík influencerov (engagement, dosah).
+- Zhrnúť trendy v obsahu populárnych influencerov v danej oblasti.
+- Identifikovať 'rising stars' alebo mikro-influencerov.
+- Porovnať komunikačné štýly rôznych influencerov.
+- Navrhnúť spôsob, ako kategorizovať nájdených influencerov.
+- Pripraviť krátky report o kľúčových influenceroch a ich stratégiách.
+❓ Čo Potrebuje AI (Ak Čaká):
+    Spracovať úlohu a pripraviť pre AI (doplniť ciele, vstupy).
+⚙️ Kľúčové Vstupy & Kontext (Pre Teba):
+    Hlavný účel (stručne): Definovaný účel pre: Nájsť influencerov od ktorých budem kopčiť
+    Cieľovka (stručne): Ja (interné)
+    Kľúčové slová: NaN
+    Kľúčový zdroj/vstup: NaN
+    Kľúčové obmedzenia: NaN
+🔗 Súvisiace Úlohy/Zdroje (Ak Relevantné):
+    Nadradená úloha: NaN
+    Podradené úlohy: NaN
+    Súvisiace úlohy: Nájsť si influencerov, od ktorých budem kopčiť (17); Nájsť aj nejaké už spravené balíčky AI nástrojov (66); Nájsť somatic exercises arzenál (109)
+    Závisí od: NaN
+    Blokuje: NaN
+    Ďalšie súvislosti: Závisí od: NaN; Blokuje: NaN; Súvisí s: Nájsť si influencerov, od ktorých budem kopčiť;Nájsť aj nejaké už spravené balíčky AI nástrojov;Nájsť somatic exercises arzenál
+✅ Kroky, ktoré som už vykonal:
+    NaN";[INITIAL TASK CREATION];Social Media & Marketing (Marketing);"Sociálne Médiá - Správa & Obsah (Marketing); Stratégia & Branding - Centrálny (Marketing)";"Plán Obsahu (Sociálne Médiá - Správa & Obsah (Marketing)); Stratégia (Celková) (Stratégia & Branding - Centrálny (Marketing))";NaN;NaN;"1. Definovať kritériá pre výber relevantných influencerov.
+2. Vyhľadať influencerov na sociálnych sieťach a iných platformách.
+3. Analyzovať profily, obsah a engagement vybraných influencerov.
+4. Vytvoriť zoznam top 5-10 influencerov pre inšpiráciu.
+5. Zdokumentovať kľúčové poznatky a príklady ich obsahu.
+6. Uložiť informácie pre budúce použitie pri tvorbe obsahu.";NaN;NaN;NaN;"1. Identifikovať kľúčové platformy, kde sa nachádzajú influenceri v danej oblasti.
+2. Navrhnúť kritériá pre hodnotenie relevancie influencerov.
+3. Vytvoriť šablónu pre záznam informácií o influenceroch.
+4. Analyzovať typy obsahu, ktoré majú u vybraných influencerov najväčší úspech.
+5. Nájsť nástroje na analýzu metrík influencerov (engagement, dosah).
+6. Zhrnúť trendy v obsahu populárnych influencerov v danej oblasti.
+7. Identifikovať 'rising stars' alebo mikro-influencerov.
+8. Porovnať komunikačné štýly rôznych influencerov.
+9. Navrhnúť spôsob, ako kategorizovať nájdených influencerov.
+10. Pripraviť krátky report o kľúčových influenceroch a ich stratégiách.";NaN;NaN;NaN;NaN;"#Oblasť:Marketing/SocMedia;#Typ:Kreatíva/Konceptualizácia;#Oblasť:Marketing/StratégiaBranding;#Zdroj:VlastnýNápad;#Fin:NepriamyVplyv;#Metóda:Agile;#Téma:Marketing/SocialMediaMarketing;#Kontext:PC;#Stav:Plánovanie;#Vplyv:Energia/Neutrálne;#Typ:RozhodovanieStrategické;#Téma:Marketing/Branding;#Nástroj:Asana;#Typ:Research/AnalýzaKonkurencie";P3 - Medium;NaN;NaN;No Deadline / Ongoing;Neopakuje sa;NaN;NaN;2025-04-22;Definovaný cieľ pre: Nájsť influencerov od ktorých budem kopčiť;"Prečo? (Účel/Motivácia):
+    [Doplniť účel pre 'Nájsť influencerov od ktorých budem kopčiť']
+Cieľovka? (Publikum):
+    [Doplniť cieľovku pre 'Nájsť influencerov od ktorých budem kopčiť']
+Miesto? (Ak relevantné):
+    [Doplniť miesto pre 'Nájsť influencerov od ktorých budem kopčiť']
+Nástroje? (Preferované/Potrebné):
+    [Doplniť nástroje pre 'Nájsť influencerov od ktorých budem kopčiť']
+Kontext/Brief? (Ďalšie Info):
+    [Doplniť kontext pre 'Nájsť influencerov od ktorých budem kopčiť']
+Kroky (Návrh pre AI)?:
+    [Doplniť návrh krokov pre 'Nájsť influencerov od ktorých budem kopčiť']
+Zdroje (Linky/Dokumenty):
+    [Doplniť zdroje pre 'Nájsť influencerov od ktorých budem kopčiť']
+Keywords (Kľúčové slová):
+    [Doplniť kľúčové slová pre 'Nájsť influencerov od ktorých budem kopčiť']
+Ostatné:
+    [Doplniť ostatné info pre 'Nájsť influencerov od ktorých budem kopčiť']";NaN;NaN;NaN;1 - Nová (v Inboxe);Nie (Len Pripraviť / Vyžaduje Moju Akciu);NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;Spracovať úlohu a pripraviť pre AI (doplniť ciele, vstupy).;NaN;Stratégia & Branding - Centrálny (Marketing);Stratégia (Celková) (Stratégia & Branding - Centrálny (Marketing));"Nájsť si influencerov, od ktorých budem kopčiť;Nájsť aj nejaké už spravené balíčky AI nástrojov;Nájsť somatic exercises arzenál";"17;66;109";NaN;Ja (interné);Definovaný účel pre: Nájsť influencerov od ktorých budem kopčiť;Task;Research / Analýza (Manuálna);1-2 hod;Stredná;Stredná;"Web Browser;Asana";PC / Laptop (Všeobecne);"Skill:AnalytickéMyslenie;Skill:Research/HľadanieInfoOnline";0;Definovaná metrika úspechu pre: Nájsť influencerov od ktorých budem kopčiť;Online;Nezáleží / Domov - Pracovňa;"PC/Laptop;Mobil (iOS/Android)";Nevyhnutný (Online);Stredná;Poobede Blok 1 (12:10-15:00) - Operatíva & Praktické Úlohy;Jakub Cerulík;NaN;NaN;User Input / Decision;Nerelevantné / Neviem Odhadnúť;NaN;NaN;NaN;"Social Media & Marketing (Marketing); Sociálne Médiá - Správa & Obsah (Marketing);  Stratégia & Branding - Centrálny (Marketing); Plán Obsahu (Sociálne Médiá - Správa & Obsah (Marketing));  Stratégia (Celková) (Stratégia & Branding - Centrálny (Marketing))";"Závisí od: NaN; Blokuje: NaN; Súvisí s: Nájsť si influencerov, od ktorých budem kopčiť;Nájsť aj nejaké už spravené balíčky AI nástrojov;Nájsť somatic exercises arzenál";#Fin:Žiadny
+5;Affiliate Marketing nastaviť;NaN;"ℹ️ Kľúčové Info:
+    Termín Dokončenia: NaN (No Deadline / Ongoing)
+    Priorita: P3 - Medium
+    Miesto Úlohy (Kontext): Online
+    Miesto Vykonania (Pre Teba): Nezáleží / Domov - Pracovňa
+🎯 Cieľ Úlohy:
+    Definovaný cieľ pre: Affiliate Marketing nastaviť
+➡️ Tvoj Najbližší Krok & Náročnosť:
+    Akcia: Spracovať úlohu a pripraviť pre AI (doplniť ciele, vstupy).
+    Odhadovaný Čas (Ty): 2-4 hod
+    Kognitívna Záťaž (Ty): Stredná
+    Potrebná Energia (Ty): Stredná
+    Potrebné Nástroje/Softvér (Ty): Affiliate Marketing Platform;Email Marketing Platform;Asana;Website CMS
+📋 Celý Plán Pre Teba (Aktívne Podúlohy):
+- [ ] Preskúmať a vybrať vhodnú affiliate platformu.
+- [ ] Definovať produkty/služby pre affiliate program.
+- [ ] Nastaviť provízne podmienky a pravidlá.
+- [ ] Technicky implementovať a nastaviť platformu.
+- [ ] Vytvoriť materiály pre affiliate partnerov.
+- [ ] Osloviť a zaregistrovať prvých partnerov.
+- [ ] Spustiť a monitorovať program.
+💡 Výstup AI (Výsledok/Link):
+    NaN
+🤖 Čo Urobila AI (Posledná Akcia):
+    NaN
+⏙ Celý Plán Pre AI (Navrhované kroky ako a plán čo spraví a ako bude postupovať)
+    NaN
+🦾 AI Nápady Ako Mi Môže Pomôcť:
+- Vyhľadať a porovnať top 5 affiliate platforiem pre digitálne produkty.
+- Navrhnúť 3 rôzne modely provízií pre affiliate partnerov.
+- Vytvoriť návrh affiliate zmluvy alebo podmienok.
+- Napísať vzorový email na oslovenie potenciálnych affiliate partnerov.
+- Zozbierať príklady úspešných affiliate programov v podobnej oblasti.
+- Navrhnúť základné marketingové materiály pre partnerov (bannery, swipe copy).
+- Identifikovať kľúčové metriky (KPI) na sledovanie úspešnosti programu.
+- Nájsť online komunity alebo fóra, kde sa združujú potenciálni affiliate partneri.
+- Pripraviť checklist pre technické nastavenie affiliate systému.
+- Navrhnúť stratégiu pre komunikáciu a podporu affiliate partnerov.
+❓ Čo Potrebuje AI (Ak Čaká):
+    Spracovať úlohu a pripraviť pre AI (doplniť ciele, vstupy).
+⚙️ Kľúčové Vstupy & Kontext (Pre Teba):
+    Hlavný účel (stručne): Definovaný účel pre: Affiliate Marketing nastaviť
+    Cieľovka (stručne): Ja (interné)
+    Kľúčové slová: NaN
+    Kľúčový zdroj/vstup: NaN
+    Kľúčové obmedzenia: NaN
+🔗 Súvisiace Úlohy/Zdroje (Ak Relevantné):
+    Nadradená úloha: NaN
+    Podradené úlohy: NaN
+    Súvisiace úlohy: Nastaviť Affiliate Marketing na web stránke (597); Nastaviť Affiliate Marketing na Instagrame (608)
+    Závisí od: NaN
+    Blokuje: NaN
+    Ďalšie súvislosti: Závisí od: NaN; Blokuje: NaN; Súvisí s: Nastaviť Affiliate Marketing na web stránke;Nastaviť Affiliate Marketing na Instagrame
+✅ Kroky, ktoré som už vykonal:
+    NaN";[INITIAL TASK CREATION];"Social Media & Marketing (Marketing); Pracovný Život & Administratíva (Práca & Admin)";"Marketingové Nástroje & Optimalizácie (Marketing); Financie & Byrokracia - Biznis (Práca & Admin)";"Affiliate & Partnerstvá (Nástroje) (Marketingové Nástroje & Optimalizácie (Marketing)); Financie: Prehľady & Reporty (Financie & Byrokracia - Biznis (Práca & Admin))";NaN;NaN;"1. Preskúmať a vybrať vhodnú affiliate platformu.
+2. Definovať produkty/služby pre affiliate program.
+3. Nastaviť provízne podmienky a pravidlá.
+4. Technicky implementovať a nastaviť platformu.
+5. Vytvoriť materiály pre affiliate partnerov.
+6. Osloviť a zaregistrovať prvých partnerov.
+7. Spustiť a monitorovať program.";NaN;NaN;NaN;"1. Vyhľadať a porovnať top 5 affiliate platforiem pre digitálne produkty.
+2. Navrhnúť 3 rôzne modely provízií pre affiliate partnerov.
+3. Vytvoriť návrh affiliate zmluvy alebo podmienok.
+4. Napísať vzorový email na oslovenie potenciálnych affiliate partnerov.
+5. Zozbierať príklady úspešných affiliate programov v podobnej oblasti.
+6. Navrhnúť základné marketingové materiály pre partnerov (bannery, swipe copy).
+7. Identifikovať kľúčové metriky (KPI) na sledovanie úspešnosti programu.
+8. Nájsť online komunity alebo fóra, kde sa združujú potenciálni affiliate partneri.
+9. Pripraviť checklist pre technické nastavenie affiliate systému.
+10. Navrhnúť stratégiu pre komunikáciu a podporu affiliate partnerov.";NaN;NaN;NaN;NaN;"#Oblasť:Marketing/SocMedia;#Zdroj:VlastnýNápad;#Oblasť:Marketing/StratégiaBranding;#Typ:Admin/ImplementáciaSystému;#Nástroj:Webflow;#Metóda:Agile;#Fin:Príjem/Affiliate;#Nástroj:AffiliatePlatforma;#Typ:Marketing/Affiliate;#Kontext:PC;#Stav:Plánovanie;#Vplyv:Energia/Neutrálne;#Typ:Operatíva/NastavenieTechniky;#Nástroj:Asana;#Téma:Biznis/MarketingFunnel";P3 - Medium;NaN;NaN;No Deadline / Ongoing;Neopakuje sa;NaN;NaN;2025-04-22;Definovaný cieľ pre: Affiliate Marketing nastaviť;"Prečo? (Účel/Motivácia):
+    [Doplniť účel pre 'Affiliate Marketing nastaviť']
+Cieľovka? (Publikum):
+    [Doplniť cieľovku pre 'Affiliate Marketing nastaviť']
+Miesto? (Ak relevantné):
+    [Doplniť miesto pre 'Affiliate Marketing nastaviť']
+Nástroje? (Preferované/Potrebné):
+    [Doplniť nástroje pre 'Affiliate Marketing nastaviť']
+Kontext/Brief? (Ďalšie Info):
+    [Doplniť kontext pre 'Affiliate Marketing nastaviť']
+Kroky (Návrh pre AI)?:
+    [Doplniť návrh krokov pre 'Affiliate Marketing nastaviť']
+Zdroje (Linky/Dokumenty):
+    [Doplniť zdroje pre 'Affiliate Marketing nastaviť']
+Keywords (Kľúčové slová):
+    [Doplniť kľúčové slová pre 'Affiliate Marketing nastaviť']
+Ostatné:
+    [Doplniť ostatné info pre 'Affiliate Marketing nastaviť']";NaN;NaN;NaN;1 - Nová (v Inboxe);Nie (Len Pripraviť / Vyžaduje Moju Akciu);NaN;NaN;NaN;NaN;NaN;NaN;NaN;NaN;Spracovať úlohu a pripraviť pre AI (doplniť ciele, vstupy).;Pracovný Život & Administratíva (Práca & Admin);Financie & Byrokracia - Biznis (Práca & Admin);Financie: Prehľady & Reporty (Financie & Byrokracia - Biznis (Práca & Admin));"Nastaviť Affiliate Marketing na web stránke;Nastaviť Affiliate Marketing na Instagrame";"597;608";NaN;Ja (interné);Definovaný účel pre: Affiliate Marketing nastaviť;Task;Admin / Byrokracia;2-4 hod;Stredná;Stredná;"Affiliate Marketing Platform;Email Marketing Platform;Asana;Website CMS";PC / Laptop (Všeobecne);"Skill:Marketing/Affiliate;Skill:TechnickéZručnosti/Integrácie";0;Definovaná metrika úspechu pre: Affiliate Marketing nastaviť;Online;Nezáleží / Domov - Pracovňa;"PC/Laptop;Mobil (iOS/Android)";Nevyhnutný (Online);Stredná;Poobede Blok 1 (12:10-15:00) - Operatíva & Praktické Úlohy;Jakub Cerulík;NaN;NaN;User Input / Decision;Nerelevantné / Neviem Odhadnúť;NaN;NaN;NaN;"Social Media & Marketing (Marketing);  Pracovný Život & Administratíva (Práca & Admin); Marketingové Nástroje & Optimalizácie (Marketing);  Financie & Byrokracia - Biznis (Práca & Admin); Affiliate & Partnerstvá (Nástroje) (Marketingové Nástroje & Optimalizácie (Marketing));  Financie: Prehľady & Reporty (Financie & Byrokracia - Biznis (Práca & Admin))";"Závisí od: NaN; Blokuje: NaN; Súvisí s: Nastaviť Affiliate Marketing na web stránke;Nastaviť Affiliate Marketing na Instagrame";#Fin:Žiadny

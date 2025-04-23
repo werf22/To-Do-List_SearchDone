@@ -1,0 +1,110 @@
+# AI Assistant Rules for "AI To Do List App" Project
+
+## Preamble
+
+These rules define the operational guidelines for the AI assistant working on the "AI To Do List App" project. Adherence to these rules is crucial for maintaining context, code quality, consistency, and accurate project tracking. The goal is to build a simple, reliable, and functional MVP iteratively.
+
+## === Global Rules (Apply to All Interactions) ===
+
+### 🔄 Use of MCP
+1.  ** For documentation of languages and API use Context7 MCP or use search to find out.
+
+### 🔄 Project Awareness & Context
+
+1.  **Initial Context Load:** At the start of **every new conversation or major context shift**, **ALWAYS read and internalize** the content of the following core project files to fully understand the project's goals, architecture, data structure, current status, and constraints:
+    *   `README.md` (Project Overview, Setup)
+    *   `PRD.txt` (Product Requirements)
+    *   `PLANNING.md` (Development Plan, Phases, Architecture)
+    *   `TASK.md` (Current/Pending Developer Tasks)
+    *   `DONE.md` (Log of Completed Milestones)
+    *   `PROJECTS_FILE_STRUCTURE_DOCUMENTATION.md` (Detailed File Structure)
+    *   `config/TASK_FIELD_CONFIG.ts` (Definitive Task Field Structure for UI/AI)
+    *   `prisma/schema.prisma` (Definitäive Database Schema)
+    *   `csv_field_documentation.csv` (Documentation of every field in database)
+    *   `csv_input_form_documentation.csv` (Documentation of what should be in form / create task)
+    *   `csv_to_import.csv` (file with tasks we will try to import - all fields should be imported succesfully to out app)
+2.  **Core Data Structure:** Recognize that `config/TASK_FIELD_CONFIG.ts` and `prisma/schema.prisma` are the **fundamental sources of truth** for the application's data model. All data handling, UI rendering, and AI processing must align with these definitions.
+3.  **Status Check:** Before starting work on a specific request, quickly consult `TASK.md` and `DONE.md` to understand the immediate context of what has just been completed and what the next logical steps are according to the plan.
+4.  **Consistency:** Adhere strictly to the naming conventions, file structure, architectural patterns, and component design outlined in `PROJECTS_FILE_STRUCTURE_DOCUMENTATION.md`, `PLANNING.md`, and exemplified in existing code.
+
+### 🧠 AI Behavior Rules
+
+5.  **Clarity Over Assumption:** **NEVER assume** missing context or implicit requirements. If a request is ambiguous or lacks necessary detail, **ALWAYS ask clarifying questions** before proceeding.
+6.  **No Hallucination:** **NEVER invent or hallucinate** npm packages, libraries, functions, Prisma methods, or Next.js features. Only use known, verifiable functionalities from the chosen tech stack (Next.js, React, Prisma, TypeScript, Shadcn/ui, Tailwind CSS, Zod, etc.).
+7.  **Path Verification:** **ALWAYS confirm** file paths and module names referenced in code, imports, or tests likely exist based on `PROJECTS_FILE_STRUCTURE_DOCUMENTATION.md` or previous interactions. Ask if unsure.
+8.  **Simplicity & MVP Focus:** **ALWAYS prioritize the simplest, most direct solution** that fulfills the immediate requirement, especially in early phases. Build iteratively from a functional MVP towards more complex features as defined in `PLANNING.md`. Avoid over-engineering.
+9.  **Functional Iterations:** Aim for each significant coding interaction to result in a **functional state**, even if the feature is incomplete. The application should ideally be runnable after each step.
+10. **Safety:** **NEVER delete or overwrite existing code or files** unless explicitly instructed to do so as part of a clearly defined task from `TASK.md` or user request. When modifying existing code, explain *what* is being changed and *why*.
+
+## === Workspace Rules (Apply During Code Generation/Modification) ===
+
+### 🧱 Code Structure & Modularity
+
+11. **File Length Guideline:** Avoid excessively long files. As a general guideline, if a component, API route, or utility file significantly exceeds **~500-600 lines**, consider refactoring or splitting it into smaller, more focused modules or helper functions/hooks.
+12. **Modularity:** Organize code logically:
+    *   Reusable UI elements go into `/components`.
+    *   API handlers go into `/app/api`.
+    *   Page components go into `/app` (or subdirectories).
+    *   Shared logic/utilities go into `/lib`.
+    *   Configuration goes into `/config`.
+13. **Imports:** Use clear and consistent import paths. Prefer Next.js path aliases (e.g., `@/components/TaskForm`, `@/lib/prisma`) configured in `tsconfig.json`.
+
+### ✨ Style & Conventions (TypeScript/Next.js/React)
+
+14. **Language:** Use **TypeScript** for all application code.
+15. **Linting & Formatting:** Adhere strictly to project-configured **ESLint** rules and **Prettier** formatting. Assume these tools are set up.
+16. **Typing:** Utilize TypeScript's static typing effectively. Use specific types (`Task` from Prisma, custom interfaces/types) instead of `any` whenever possible. Define interfaces for component props and API payloads/responses.
+17. **Data Validation:** Use **`zod`** for validating API request bodies and potentially environment variables or complex function arguments.
+18. **API Routes:** Use standard Next.js API Route conventions (`app/api/.../route.ts`).
+19. **ORM:** Use **Prisma Client** exclusively for database interactions via the singleton instance exported from `lib/prisma.ts`.
+20. **Comments & Docs:**
+    *   Use **JSDoc comments (`/** ... */`)** for documenting functions, components, types, and complex logic, following standard conventions.
+        ```typescript
+        /**
+         * Fetches tasks from the API endpoint.
+         * @param [filter] - Optional filter object.
+         * @returns {Promise<Task[]>} A promise resolving to an array of tasks.
+         * @throws {Error} If the fetch request fails.
+         */
+        ```
+    *   Add inline comments (`//`) to explain non-obvious code sections or complex decisions (`// Reason: ...`).
+
+### 🧪 Testing & Reliability (Simplified for MVP)
+
+- **Always create unit tests for new features** (functions, classes, routes, etc).
+- **After updating any logic**, check whether existing unit tests need to be updated. If so, do it.
+- **Tests should live in a `/tests` folder** mirroring the main app structure.
+  - Include at least:
+    - 1 test for expected use
+    - 1 edge case
+    - 1 failure case
+21. **Testing Framework:** Assume **Jest** and **React Testing Library** are the primary tools for unit and component testing. (E2E testing with Cypress/Playwright might be added later).
+22. **Basic Tests (Future Goal):** While not strictly enforced for the absolute *initial* MVP files, the *goal* is to add tests for new significant functions, components, and API routes as features mature (post Phase 1/2).
+23. **Test Location:** Tests should reside in `__tests__` subdirectories or use `.test.ts`/`.spec.ts` extensions alongside the code they test, following Jest/RTL conventions.
+24. **Test Updates:** When updating existing logic, check if related tests need modification and update them accordingly.
+
+### 📝 Documentation & Project Tracking Updates
+
+25. **Task Tracking:**
+    *   Before starting work, verify the task exists in `TASK.md`. If not, add it briefly.
+    *   Upon successful completion of a task requested by the user, **immediately mark the corresponding task as completed** (e.g., change `[ ]` to `[x]`) in `TASK.md`.
+    *   Add new sub-tasks or TODOs discovered during development to `TASK.md` under a       
+        “Discovered During Work” section.
+26. **Log Completion:** After marking a task done in `TASK.md`, **add a concise entry to `DONE.md`** summarizing the completed feature/task and including the date. **Only add; do not delete** previous entries.
+27. **README Updates:** If changes significantly alter the project's setup, dependencies, or how to run it, **add necessary updates to `README.md`**.
+28. **File Structure Docs:** If new directories are created or the purpose of existing ones changes significantly, **update `PROJECTS_FILE_STRUCTURE_DOCUMENTATION.md`**.
+29. **Reporting:** At the end of each response involving code changes or task completion, briefly state which tasks were completed in `TASK.md` and that `DONE.md` (and potentially `README.md` or structure docs) have been updated conceptually (as the AI cannot *actually* edit the files in the user's workspace unless integrated via specific tools).
+
+
+**Update `DONE.md`, `TASK.md`, `README.md` `PROJECTS_FILE_STRUCTURE_DOCUMENTATION.md`** after each completion of your response, so we keep record of what you have done, what was the problems, where we are in the process, what is in front of us, where to find what. Do not overwrite things, its better if you ADD things. 
+
+**Save to GitHub
+    * After every 15 responses save this project as a new project / git in GitHub
+
+
+Any updates you are doing in the documentation files, you have to write not just date, but also time. 
+
+Write bit of documentation also to the code, so any AI who never seen this app understands it
+
+### 🔄 File Management
+*   Always when you create new file, move it to the folder, or place where it belongs, so we don't have mess in the project

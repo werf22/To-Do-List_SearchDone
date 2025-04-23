@@ -1,0 +1,126 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Define the database connection (using PostgreSQL here)
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL") // Make sure to set this environment variable
+}
+
+// Define the client generator (for Prisma Client)
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Define the core Task model based on TASK_FIELD_CONFIG
+model Task {
+  // --- Core Identification & Timestamps ---
+  id                  String    @id @default(cuid()) // Standard DB primary key
+  task_id             String?   @unique // Your original task_id field, optional and unique if used
+  name                String    @db.Text             // From config: name
+  created_at          DateTime  @default(now())      // From config: created_at (DB managed)
+  completed_at        DateTime?                      // From config: completed_at
+  last_modified_at    DateTime  @updatedAt           // From config: last_modified_at (DB managed)
+
+  // --- Core Content Fields ---
+  description         String?   @db.Text             // From config: description
+  notes               String?   @db.Text             // From config: notes
+  task_comments       String?   @db.Text             // From config: task_comments (Stored as raw text/json string)
+
+  // --- Hierarchy & Categorization ---
+  portfolio           String[]                       // From config: portfolio (Multi-select -> String Array)
+  project             String[]                       // From config: project (Multi-select -> String Array)
+  section             String[]                       // From config: section (Multi-select -> String Array)
+  parent_task         String?                        // From config: parent_task (Name)
+  parent_task_id      String?                        // From config: parent_task_id (ID as String)
+  // Note: Actual relation to parent Task omitted for simplicity, use parent_task_id for lookups
+
+  // --- Subtasks & Dependencies (Stored as Text for Simplicity/CSV) ---
+  subtasks_for_user       String?   @db.Text          // From config: subtasks_for_user (List as text)
+  subtasks_for_ai         String?   @db.Text          // From config: subtasks_for_ai (List as text)
+  subtasks_in_system      String?   @db.Text          // From config: subtasks_in_system (List of names as text)
+  subtasks_id_in_system   String?   @db.Text          // From config: subtasks_id_in_system (List of IDs as text)
+  dependents              String?   @db.Text          // From config: dependents (List of names as text)
+  dependents_id           String?   @db.Text          // From config: dependents_id (List of IDs as text)
+  outgoing_dependents     String?   @db.Text          // From config: outgoing_dependents (List of names as text)
+  outgoing_dependents_id  String?   @db.Text          // From config: outgoing_dependents_id (List of IDs as text)
+  related_tasks           String?   @db.Text          // From config: related_tasks (List of names as text)
+  related_tasks_id        String?   @db.Text          // From config: related_tasks_id (List of IDs as text)
+
+  // --- Tagging & Basic Attributes ---
+  tags                String[]                       // From config: tags (Multi-select -> String Array)
+  priority            String?                        // From config: priority (P0-P4 as text)
+  due_date            DateTime?                      // From config: due_date
+  start_date          DateTime?                      // From config: start_date
+  deadline_type       String?                        // From config: deadline_type (Hard, Soft, None)
+  recurrence_frequency String?                       // From config: recurrence_frequency
+  assignee            String?                        // From config: assignee (User name/email as text)
+  type                String?                        // From config: type (Task, Milestone)
+  collaborators       String?   @db.Text             // From config: collaborators (List of names/emails as text)
+
+  // --- AI Workflow & Control ---
+  ai_workflow_status          String    @default("1 - Nová (v Inboxe)") // From config: ai_workflow_status
+  allow_autonomous_execution  String    @default("Nie (Len Pripraviť / Vyžaduje Moju Akciu)") // From config: allow_autonomous_execution
+  ai_behavior_on_uncertainty  String    @default("Pýtaj sa / Čakaj na Mňa") // From config: ai_behavior_on_uncertainty
+  ai_creativity_level         String    @default("Stredná (Vyvážená)") // From config: ai_creativity_level
+  ai_processing_priority      String    @default("Normálna") // From config: ai_processing_priority
+  ai_agent_status_log         String?   @db.Text          // From config: ai_agent_status_log
+  number_of_variations        Int?                         // From config: number_of_variations
+  feedback_for_ai             String?   @db.Text          // From config: feedback_for_ai
+  ai_output_rating            String?                      // From config: ai_output_rating (Star rating as text)
+  ai_output_result_link       String?                      // From config: ai_output_result_link (URL as text)
+  action_required_from_user   String?                      // From config: action_required_from_user
+
+  // --- AI Input & Context ---
+  task_goal                 String    @db.Text             // From config: task_goal (Mandatory)
+  input_data_context        String    @db.Text             // From config: input_data_context (Mandatory)
+  desired_output_format     String[]                       // From config: desired_output_format (Multi-select -> String Array)
+  desired_style_tone        String[]                       // From config: desired_style_tone (Multi-select -> String Array)
+  specific_constraints_instructions String? @db.Text       // From config: specific_constraints_instructions
+  ai_action_process_free_text String?                      // From config: ai_action_process_free_text
+  ai_action_process_dropdown  String[]                       // From config: ai_action_process_dropdown (Multi-select -> String Array)
+  ai_brainstorm_ideas_on_how_it_can_help_me String? @db.Text // From config: ai_brainstorm_ideas_on_how_it_can_help_me
+
+  // --- User Context & Requirements ---
+  task_type                 String?                      // From config: task_type (For User)
+  estimated_user_time       String?                      // From config: estimated_user_time
+  cognitive_load            String?                      // From config: cognitive_load (For User)
+  energy_level_required     String?                      // From config: energy_level_required (For User)
+  required_tools_software   String[]                       // From config: required_tools_software (Multi-select -> String Array)
+  required_hardware         String[]                       // From config: required_hardware (Multi-select -> String Array)
+  required_skills           String[]                       // From config: required_skills (Multi-select -> String Array)
+  location                  String?                      // From config: location (Context Location)
+  execution_location        String?                      // From config: execution_location (User Execution Loc.)
+  required_devices          String[]                       // From config: required_devices (For User) (Multi-select -> String Array)
+  internet_requirement      String?                      // From config: internet_requirement
+  focus_requirement         String?                      // From config: focus_requirement
+  optimal_time_of_day       String[]                       // From config: optimal_time_of_day (Multi-select -> String Array)
+
+  // --- Relationships & Impact ---
+  related_portfolios        String[]                       // From config: related_portfolios (Multi-select -> String Array)
+  related_projects          String[]                       // From config: related_projects (Multi-select -> String Array)
+  related_sections          String[]                       // From config: related_sections (Multi-select -> String Array)
+  related_entities          String[]                       // From config: related_entities (Multi-select -> String Array of names/orgs)
+  target_audience           String?   @db.Text             // From config: target_audience
+  task_purpose              String?   @db.Text             // From config: task_purpose (Why)
+  expected_impact_success_metric String? @db.Text          // From config: expected_impact_success_metric
+  waiting_for               String?                      // From config: waiting_for
+
+  // --- Financials ---
+  estimated_cost_budget         Float?                       // From config: estimated_cost_budget
+  financial_return_value_speed  String?                      // From config: financial_return_value_speed
+  financial_aspect              String?   @default("Žiadny") // From config: financial_aspect (Added)
+
+  // --- Input-Only Fields (Stored for Context/History) ---
+  suggested_initial_steps_subtasks String? @db.Text       // From config: suggested_initial_steps_subtasks
+  related_areas_for_ai_to_consider String? @db.Text       // From config: related_areas_for_ai_to_consider
+  potential_dependencies_related_tasks String? @db.Text    // From config: potential_dependencies_related_tasks
+
+  // Optional: Indexing for frequently queried fields
+  @@index([ai_workflow_status])
+  @@index([priority])
+  @@index([due_date])
+  @@index([portfolio]) // Indexing array might depend on specific DB features/performance needs
+  @@index([project])
+  @@index([section])
+}
