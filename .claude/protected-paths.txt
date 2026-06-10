@@ -1,0 +1,4 @@
+# Protected paths — one glob/substring per line (hook-enforced)
+.env
+*.pem
+*.key
