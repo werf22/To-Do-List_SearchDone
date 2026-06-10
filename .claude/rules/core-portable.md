@@ -20,14 +20,16 @@ Every non-trivial task, three layers (skip only trivial single-step asks):
 
 ## Session start (cloud or local)
 
-1. Read this repo's CLAUDE.md fully, then every planning doc its Docs map names (tasks, context, lessons, done-log, documentation map, file structure). Read lessons FIRST.
+1. Read this repo's CLAUDE.md fully, then the **handoff file FIRST** (`HANDOFF.md`; legacy name `CONTEXT.md`) — it is the designated entry point: Snapshot, DO-THIS-NOW, state of the world. If it's stale (older than recent commits), rebuild it from git + the other docs before any work. Then lessons, then every other planning doc the Docs map names (tasks, done-log, documentation map, file structure).
 2. Scan the source tree 2–3 levels; diff reality against the file-structure doc and flag drift.
 3. Stack and conventions come from THIS repo only — lockfiles, configs, existing code.
 4. Find the next unchecked task in the task file; confirm target, then work via the task loop. Skills (if vendored): `.claude/skills/session-start`, `task-loop`.
 
 ## Execution loop (per task)
 
-branch `feature/<task-id>` → smallest vertical slice (end-to-end, not layer-by-layer) → test immediately against real user flows → fix until green → atomic commit → push → update project docs per `.claude/rules/documentation-protocol.md` → lesson check → next task.
+branch `feature/<task-id>` → smallest vertical slice (end-to-end, not layer-by-layer) → test immediately against real user flows → fix until green → atomic commit → push → update project docs per `.claude/rules/documentation-protocol.md` (HANDOFF first) → lesson check → next task.
+
+- **Handoff always current:** `HANDOFF.md` is updated after EVERY run — every completed step, red test, decision, or pause, not just finished tasks. The session may die at any moment; a cold AI must be able to continue from HANDOFF alone. Never end a run with a stale handoff.
 
 - **Stop-and-fix:** one failing check halts everything. Never proceed on red, never claim green without running it.
 - **Health check after each feature:** "Can a user actually perform the main action right now?"
