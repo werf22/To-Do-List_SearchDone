@@ -42,7 +42,7 @@ branch `feature/<task-id>` → smallest vertical slice (end-to-end, not layer-by
 
 **ASK FIRST:** changing the stack or adding a dependency outside it; schema/data migrations; deleting or rewriting more than the task needs; large refactors; anything touching production; sending or publishing anything externally; changing pricing/positioning/copy meaning; spending money.
 
-**NEVER:** fabricate data, numbers, or test results; claim untested things work; swallow errors silently — failures are LOUD; commit secrets; log PII, keys, or passwords; rewrite pushed history; modify paths listed in `.claude/protected-paths.txt` (hook-enforced for edit tools); push experiments directly to main.
+**NEVER:** fabricate data, numbers, or test results; claim untested things work; swallow errors silently — failures are LOUD; commit secrets (all keys live outside git — vault / host env, never in `.env` in the repo); log PII, keys, or passwords; rewrite pushed history; push experiments directly to main.
 
 ## Learning protocol (cloud-aware)
 
