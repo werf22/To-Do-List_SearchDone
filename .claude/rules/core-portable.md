@@ -30,6 +30,7 @@ Every non-trivial task, three layers (skip only trivial single-step asks):
 branch `feature/<task-id>` → smallest vertical slice (end-to-end, not layer-by-layer) → test immediately against real user flows → fix until green → atomic commit → push → update project docs per `.claude/rules/documentation-protocol.md` (HANDOFF first) → lesson check → next task.
 
 - **Handoff always current:** `HANDOFF.md` is updated after EVERY run — every completed step, red test, decision, or pause, not just finished tasks. The session may die at any moment; a cold AI must be able to continue from HANDOFF alone. Never end a run with a stale handoff.
+- **Auto-commit — mandatory, no exceptions:** after EVERY change to code or files, commit AND push to GitHub automatically — every time, without being asked and without the owner checking. Never end a turn with uncommitted changes. The `Stop` hook `.claude/hooks/auto-commit.sh` enforces this physically; the rule is the intent, the hook is the guarantee.
 
 - **Stop-and-fix:** one failing check halts everything. Never proceed on red, never claim green without running it.
 - **Health check after each feature:** "Can a user actually perform the main action right now?"

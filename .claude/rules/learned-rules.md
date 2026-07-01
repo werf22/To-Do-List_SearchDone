@@ -18,6 +18,8 @@ When the file exceeds ~40 rules (seed rules count and may be merged like any oth
 
 - [2026-06-10] all work — the main session and every subagent — runs on the top-tier model at maximum effort (currently Fable 5, `claude-fable-5`); downgrading anything to a cheaper model is ASK-FIRST, never silent — user explicitly requires uniform flagship quality ("všetko musí byť spravené pomocou Fable 5 najväčším effortom"); cost is managed by fewer agents, not weaker ones.
 - [2026-06-10] every repo must carry the vendored AI layer: at local session start (and in /new-project), if `.claude/rules/core-portable.md` is missing, run `claude-code-system/install-into-repo.sh`, commit, push — autopilot, no asking — cloud sessions (iPhone/web/desktop-cloud) load ONLY the committed repo, so an unvendored repo means a cloud session with no system; user requires automatic cloud parity on every repo.
+- [2026-06-16] when synthesizing from the user's knowledge base, always draw from the ENTIRE corpus — raw notes, concepts, entities, journals, tags, AND existing syntheses — never only from finished syntheses; distillations are lossy (they drop exact techniques, verbatim phrasing, raw material the synthesis needs); user corrected this explicitly ("nemáš čerpať len zo syntézy… čerpaj zo všetkých poznámok aj raw").
+- [2026-06-18] after EVERY change to code/files, commit AND push to GitHub automatically — every time, no exceptions, without being asked and without the user checking; never end a turn with uncommitted work — user demanded it emphatically ("ZA KAŽDÝM a v KAŽDOM PRÍPADE… automaticky"); enforced by the Stop hook `auto-commit.sh` (global `~/.claude/hooks/` + vendored `.claude/hooks/` in every repo), because CLAUDE.md text is only a request.
 
 ## Declined
 
